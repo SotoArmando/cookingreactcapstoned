@@ -1,25 +1,36 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { Route, Switch } from 'react-router';
+
+const paths = {
+  "/": Homepath(),
+}
+
+console.log(Object.entries(paths))
+
+function Homepath() {
+  return <div>
+    App.js says: Hello World!
+  </div>
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch >
+        {
+          // Object.entries(paths).forEach(([path, component]) => <Route  path="/">
+          //   <Homepath/>
+          // </Route>)
+          <Route path="/">
+            path says hello world
+          </Route>
+
+        }
+      </Switch>
     </div>
   );
 }
+
 
 export default App;
