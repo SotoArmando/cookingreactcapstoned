@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { createMapDispatchtoProps } from "../reducers/createDefaultreducer"
 
 function Portraitmeal() {
     return <div>
@@ -6,4 +7,8 @@ function Portraitmeal() {
     </div>
 }
 
-export default connect()(Portraitmeal)
+
+const mapStatetoProps = ({appstate}) => ({appstate})
+const mapDispatchtoProps = createMapDispatchtoProps()
+
+export default connect(mapStatetoProps,mapDispatchtoProps)(Portraitmeal)
