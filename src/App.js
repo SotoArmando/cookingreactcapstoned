@@ -2,24 +2,16 @@ import logo from './logo.svg';
 import './App.scss';
 import { Route, Switch } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Detectitems, fetcher, mealdbkeys } from './fetch';
+import { Defaultstate, fetcher, mealdbkeys } from './fetch';
+import Wrappedrowlist from './components/Wrappedrowlist';
+import Cellmeal from './components/cellMeal';
 
 const paths = {
-  "/": Homepath(),
+  "/": Homepath,
 }
-
-console.log(Object.entries(paths))
 
 function Homepath() {
-  return <div>
-    App.js says: Hello World!
-  </div>
-}
-
-
-function App() {
-
-  const [[loaded, setLoaded], [data, setData]] = [useState(false), useState({})];
+  const [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
 
   let handleFetch = ({ 0: response_0, 1: response_1 }) => {
     debugger;
@@ -31,26 +23,31 @@ function App() {
       const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory } = mealdbkeys
       fetcher([urlfiltercategory, urllistcategory], handleFetch).fetchandwaitAll(); setLoaded(true)
     }
-  }, [])
+  })
 
-  // const {}
+  const { meals, focusedmealdetails, categories } = data;
+  return <div>
+    {<Wrappedrowlist list={meals} item={Cellmeal} />}
+    {JSON.stringify(focusedmealdetails)}
+    {JSON.stringify(categories)}
+  </div>
+}
+
+function Portraitmealpath() {
+  return <div className="col">
+    <Portraitmealpath />
+  </div>
+}
+
+function App() {
+  const routes = Object.entries(paths).map(([route, view]) => <Route path={route}>{view()}</Route>);
   return (
     <div className="App">
       <Switch >
-        {
-          // Object.entries(paths).forEach(([path, component]) => <Route  path="/">
-          //   <Homepath/>
-          // </Route>)
-
-          <Route path="/">
-            {JSON.stringify(data)}
-          </Route>
-
-        }
+        {routes}
       </Switch>
     </div>
   );
 }
-
 
 export default App;

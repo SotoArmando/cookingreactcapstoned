@@ -16,6 +16,12 @@ const mealdbkeys = {
     },
 }
 
+const Defaultstate = {
+    meals: [],
+    focusedmealdetails: [],
+    categories: [],
+}
+
 const Detectitems = (item) => {
     debugger;
     let ans;
@@ -62,7 +68,7 @@ function fetcher(url, call) {
             if (cond_0) {
                 Promise.all(url.map(e => fetch(e, options).then(resp => resp.json()).then(({ meals: items }) => (
                     { [Detectitems(items[0])]: items }
-                    )))).then(call)
+                )))).then(call)
             }
         }
 
@@ -71,4 +77,4 @@ function fetcher(url, call) {
     return d;
 }
 
-export { mealdbkeys, fetcher, Detectitems }
+export { mealdbkeys, fetcher, Detectitems, Defaultstate }

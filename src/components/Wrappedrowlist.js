@@ -1,8 +1,14 @@
-import { connect } from "react-redux";
+import React from "react";
 
-function Wrappedrowlist({ props: { item }, list, handleClick }) {
+
+function Wrappedrowlist({  item:Item , list, handleClick }) {
+    debugger
+    console.log("Wrappedrowlist list ",list)
+
     return <div className="row basis_43 ">
-        {(list || []).forEach(e => item({ ...e, handleClick }))}
+        {
+            (list || []).map(e => Item({...e, handleClick}))
+        }
     </div>
 }
 
