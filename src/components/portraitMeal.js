@@ -8,7 +8,7 @@ function Portraitmeal() {
 }
 
 
-const mapStatetoProps = ({appstate}) => ({appstate})
+const mapStatetoProps = ({appstate: focus}) => ({appstate})
 const mapDispatchtoProps = createMapDispatchtoProps()
 
 export default connect(mapStatetoProps,mapDispatchtoProps)(Portraitmeal)

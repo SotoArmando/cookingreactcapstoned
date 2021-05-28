@@ -18,7 +18,7 @@ const mealdbkeys = {
 
 const Defaultstate = {
     meals: [],
-    focusedmealdetails: [],
+    focusedmealdetails: {},
     categories: [],
 }
 

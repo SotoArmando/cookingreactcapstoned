@@ -14,7 +14,6 @@ function Homepath() {
   const [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
 
   let handleFetch = ({ 0: response_0, 1: response_1 }) => {
-    debugger;
     setData({ ...data, ...response_0, ...response_1 })
   }
 
