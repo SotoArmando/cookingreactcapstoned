@@ -95,7 +95,8 @@
 
           & > * {
               flex: 1 1 (1rem * core($i));
-              flex-grow: 1;
+              flex-grow: 0;
+              box-sizing: border-box;
           }
       }
 
@@ -816,6 +817,8 @@ $hover-msg-mobile: ("more", "Tap again for more details"), ("more_1", "Click for
 
           & > * {
               flex: auto auto ((1rem * core(25)) * core($i));
+              flex-grow: 0;
+              box-sizing: border-box;
           }
       }
       .mf#{$i * 100} {

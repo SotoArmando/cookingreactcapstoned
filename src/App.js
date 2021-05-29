@@ -10,13 +10,13 @@ import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
 import Cellcategory from './components/Cellcategory';
 import { connect } from 'react-redux';
 import Rowsearch from './components/Rowsearch';
+import Fixedrownav from './components/Fixedrownav';
 
 
 function Homepath({ u_appstate }) {
   let [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
   
   let handleLoadFetch = ({ 0: { meals }, 1: { categories }, 2: { focusedmealdetails: mealslatest } }) => {
-    debugger;
     u_appstate("categories", categories)
     setData({ ...data, meals, categories, mealslatest })
   }
@@ -48,7 +48,7 @@ function Homepath({ u_appstate }) {
 
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
-    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
+    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} basis={40}/>
     <Wrappedrowlist list={meals} item={Cellmeal} />
     <span>Latest</span>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} />
@@ -68,6 +68,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Fixedrownav heigth={5} />
       <Switch >
         {Object.entries(paths).map(({ 0: route, 1: View }) => <Route path={route} ><View /></Route>)}
       </Switch>
