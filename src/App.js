@@ -48,10 +48,13 @@ function Homepath({ u_appstate }) {
 
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
-    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} basis={40}/>
-    <Wrappedrowlist list={meals} item={Cellmeal} />
-    <span>Latest</span>
-    <Wrappedrowlist list={mealslatest} item={Cellmeal} />
+    <div className="corebox_2 items_center row">Popular Categories</div>
+    <Wrappedrowlist list={categories} item={Cellcategory} marginv={27} marginh={21} handleClick={handleCategoryFilterUpdate} basis={40}/>
+    <div className="corebox_2 items_center row">Latest</div>
+    <Wrappedrowlist list={mealslatest} item={Cellmeal} marginv={27} marginh={21}/>
+    <div className="corebox_2 items_center row">Library</div>
+    <Wrappedrowlist list={meals} item={Cellmeal} marginv={27} marginh={21}/>
+   
   </div>
 }
 

@@ -5,7 +5,10 @@ export default function Rowsearch({ handleSubmit }) {
             handleSubmit(textsearch)
         }
     }
-    return <div>
-        <input placeholder="Search " onKeyDownCapture={handleKeyDown} />
+    return <div className="col center corebox_15 back_22">
+        <input placeholder="Search" className="back_0 corebox_0 maxedcorebox_x18  pad_24 " onKeyDownCapture={handleKeyDown} />
+        <span className="back_0 corebox_0 maxedcorebox_x18  pad_l24 fore_4">
+            E.g Rice, Soup, Fish
+        </span>
     </div>
 }
