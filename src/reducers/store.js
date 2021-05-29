@@ -17,7 +17,6 @@ const persistedReducer = persistCombineReducers(persistConfig, reducers)
 
 
 export default () => {
-
     let store = createStore(persistedReducer, { appstate: Defaultstate })
     let persistor = persistStore(store)
     return { store, persistor }

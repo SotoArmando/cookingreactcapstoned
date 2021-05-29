@@ -14,14 +14,14 @@ import Rowsearch from './components/Rowsearch';
 
 function Homepath({ u_appstate }) {
   let [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
-
-  let handleLoadFetch = ({ 0: { meals }, 1: { categories } }) => {
+  
+  let handleLoadFetch = ({ 0: { meals }, 1: { categories }, 2: { focusedmealdetails: mealslatest } }) => {
+    debugger;
     u_appstate("categories", categories)
-    setData({ ...data, meals, categories })
+    setData({ ...data, meals, categories, mealslatest })
   }
 
   let handleFetch = ({ meals: response }) => {
-    debugger;
     setData({ ...data, [Detectitems(response[0])]: response })
   }
 
@@ -31,26 +31,27 @@ function Homepath({ u_appstate }) {
   }
 
   let handleSearch = (search) => {
-    debugger;
     const { ["Search meal by name"]: url } = mealdbkeys;
     fetcher(url + search, ({ meals: response }) => {
-      debugger;
       setData({ ...data, meals: response })
     }).fetch()
   }
 
   useEffect(() => {
     if (!loaded) {
-      const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory } = mealdbkeys
-      fetcher([urlfiltercategory + "Seafood", urllistcategory], handleLoadFetch).fetchandwaitAll(); setLoaded(true)
+      const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory, ["Filter by Latest"]: urlmealslatest } = mealdbkeys
+      fetcher([urlfiltercategory + "Seafood", urllistcategory, urlmealslatest], handleLoadFetch).fetchandwaitAll(); setLoaded(true)
     }
   })
 
-  const { meals, categories } = data;
+  const { categories, meals, mealslatest } = data;
+
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
     <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
     <Wrappedrowlist list={meals} item={Cellmeal} />
+    <span>Latest</span>
+    <Wrappedrowlist list={mealslatest} item={Cellmeal} />
   </div>
 }
 

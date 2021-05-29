@@ -3,16 +3,18 @@ const mealdbkeys = {
     "Lookup full meal details by id": "https://themealdb.p.rapidapi.com/lookup.php?i=",
     "List all meal categories": "https://themealdb.p.rapidapi.com/list.php?c=list",
     "Filter by Category": "https://themealdb.p.rapidapi.com/filter.php?c=",
+    "Filter by Latest":"https://themealdb.p.rapidapi.com/latest.php",
     keys: {
         "Search meal by name": "meals",
         "Lookup full meal details by id": "focusedmealdetails",
         "List all meal categories": "categories",
-        "Filter by Category": "meals"
+        "Filter by Category": "meals",
+        "Filter by Latest": "mealslatest",
     },
     listfields: {
+        categories: ["strCategory"],
         meals: ["strMeal", "strMealThumb", "idMeal"],
         focusedmealdetails: ["idMeal", "strMeal", "strDrinkAlternate", "strCategory", "strArea", "strInstructions", "strYoutube"],
-        categories: ["strCategory"],
     },
 }
 
@@ -20,6 +22,7 @@ const Defaultstate = {
     meals: [],
     focusedmealdetails: {},
     categories: [],
+    mealslatest: []
 }
 
 const Detectitems = (item) => {
@@ -28,7 +31,7 @@ const Detectitems = (item) => {
     const { listfields } = mealdbkeys
 
     Object.keys(listfields).forEach(e => {
-        ans = Object.keys(item).every(ee => listfields[e].indexOf(ee) != -1) ? e : ans;
+        ans = listfields[e].every(ee => item.hasOwnProperty(ee)) ? e : ans;
     })
 
     return ans;
