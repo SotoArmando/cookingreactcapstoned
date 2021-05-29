@@ -1,6 +1,6 @@
 const mealdbkeys = {
     "Search meal by name": "https://themealdb.p.rapidapi.com/search.php?s=Arrabiata",
-    "Lookup full meal details by id": "https://themealdb.p.rapidapi.com/lookup.php?i=52772",
+    "Lookup full meal details by id": "https://themealdb.p.rapidapi.com/lookup.php?i=",
     "List all meal categories": "https://themealdb.p.rapidapi.com/list.php?c=list",
     "Filter by Category": "https://themealdb.p.rapidapi.com/filter.php?c=Seafood",
     keys: {

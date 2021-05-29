@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import linkpersistedstore from './reducers/store';
+import { Provider } from 'react-redux';
 
 const { store, persistor } = linkpersistedstore();
 

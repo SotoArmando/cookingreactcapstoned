@@ -4,10 +4,12 @@ import { Route, Switch } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Defaultstate, fetcher, mealdbkeys } from './fetch';
 import Wrappedrowlist from './components/Wrappedrowlist';
-import Cellmeal from './components/cellMeal';
+import Cellmeal from './components/Cellmeal';
+import Portraitmeal from './components/Portraitmeal';
 
 const paths = {
-  "/": Homepath,
+  "/recipe/:id":Portraitmealpath,
+  "/": Homepath
 }
 
 function Homepath() {
@@ -34,16 +36,16 @@ function Homepath() {
 
 function Portraitmealpath() {
   return <div className="col">
-    <Portraitmealpath />
+    <Portraitmeal />
   </div>
 }
 
 function App() {
-  const routes = Object.entries(paths).map(([route, view]) => <Route path={route}>{view()}</Route>);
+
   return (
     <div className="App">
       <Switch >
-        {routes}
+        {Object.entries(paths).map(([route, view]) => <Route path={route}>{view()}</Route>)}
       </Switch>
     </div>
   );

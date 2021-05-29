@@ -4,7 +4,7 @@ function createDefaultreducer(name) {
     return function defaultreducer(state = {}, payload) {
         const { type: dispatch, k, v } = payload;
         console.log(`${name}[${payload.type}]`)
-        debugger;
+
         switch (dispatch) {
             case ("u_" + name):
                 return { ...state, [k]: v, loaded_at: (new Date()).toISOString() };
@@ -12,7 +12,6 @@ function createDefaultreducer(name) {
                 delete state[k];
                 return { ...state };
             case ("persist/REHYDRATE"): {
-                debugger;
                 const { payload: { [name]: rehydrate, [name]: { loaded_at } } } = payload;
                 let expireDate = new Date(loaded_at);
                 let isExpired = expireDate.setSeconds(expireDate.getSeconds() + ExpireTime) < new Date();
