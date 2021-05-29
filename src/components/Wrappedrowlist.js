@@ -2,7 +2,6 @@ import React from "react";
 
 
 function Wrappedrowlist({  item:Item , list, handleClick }) {
-    debugger
     console.log("Wrappedrowlist list ",list)
 
     return <div className="row basis_43 ">

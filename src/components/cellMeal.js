@@ -5,7 +5,7 @@ import { fetcher, mealdbkeys } from "../fetch";
 
 function Cellmeal({ strMeal, strMealThumb, idMeal }) {
 
-    const [history] = [useHistory()]
+    let [history] = [useHistory()]
     const handleClick = () => {
         history.push('/recipe/' + idMeal)
     }

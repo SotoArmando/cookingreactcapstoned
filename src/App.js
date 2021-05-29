@@ -6,31 +6,37 @@ import { Defaultstate, fetcher, mealdbkeys } from './fetch';
 import Wrappedrowlist from './components/Wrappedrowlist';
 import Cellmeal from './components/Cellmeal';
 import Portraitmeal from './components/Portraitmeal';
+import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
+import Cellcategory from './components/Cellcategory';
+import { connect } from 'react-redux';
 
-const paths = {
-  "/recipe/:id":Portraitmealpath,
-  "/": Homepath
-}
 
-function Homepath() {
-  const [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
+function Homepath({ u_appstate }) {
+  let [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
 
-  let handleFetch = ({ 0: response_0, 1: response_1 }) => {
-    setData({ ...data, ...response_0, ...response_1 })
+  let handleLoadFetch = ({ 0: { meals }, 1: { categories } }) => {
+    u_appstate("categories", categories)
+    setData({ ...data, meals, categories })
+  }
+
+  let handleCategoryFilterUpdate = (category) => {
+    const { ["Filter by Category"]: url } = mealdbkeys;
+    fetcher(url + category, ({ meals: response }) => {
+      setData({ ...data,meals: response })
+    }).fetch()
   }
 
   useEffect(() => {
     if (!loaded) {
       const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory } = mealdbkeys
-      fetcher([urlfiltercategory, urllistcategory], handleFetch).fetchandwaitAll(); setLoaded(true)
+      fetcher([urlfiltercategory + "Seafood", urllistcategory], handleLoadFetch).fetchandwaitAll(); setLoaded(true)
     }
   })
 
-  const { meals, focusedmealdetails, categories } = data;
+  const { meals, categories } = data;
   return <div>
-    {<Wrappedrowlist list={meals} item={Cellmeal} />}
-    {JSON.stringify(focusedmealdetails)}
-    {JSON.stringify(categories)}
+    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
+    <Wrappedrowlist list={meals} item={Cellmeal} />
   </div>
 }
 
@@ -41,11 +47,14 @@ function Portraitmealpath() {
 }
 
 function App() {
-
+  let paths = {
+    "/recipe/:id": Portraitmealpath,
+    "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
+  }
   return (
     <div className="App">
       <Switch >
-        {Object.entries(paths).map(([route, view]) => <Route path={route}>{view()}</Route>)}
+        {Object.entries(paths).map(({ 0: route, 1: View }) => <Route path={route} ><View /></Route>)}
       </Switch>
     </div>
   );
