@@ -2,13 +2,14 @@ import logo from './logo.svg';
 import './App.scss';
 import { Route, Switch } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Defaultstate, fetcher, mealdbkeys } from './fetch';
+import { Defaultstate, Detectitems, fetcher, mealdbkeys } from './fetch';
 import Wrappedrowlist from './components/Wrappedrowlist';
 import Cellmeal from './components/Cellmeal';
 import Portraitmeal from './components/Portraitmeal';
 import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
 import Cellcategory from './components/Cellcategory';
 import { connect } from 'react-redux';
+import Rowsearch from './components/Rowsearch';
 
 
 function Homepath({ u_appstate }) {
@@ -19,10 +20,22 @@ function Homepath({ u_appstate }) {
     setData({ ...data, meals, categories })
   }
 
+  let handleFetch = ({ meals: response }) => {
+    debugger;
+    setData({ ...data, [Detectitems(response[0])]: response })
+  }
+
   let handleCategoryFilterUpdate = (category) => {
     const { ["Filter by Category"]: url } = mealdbkeys;
-    fetcher(url + category, ({ meals: response }) => {
-      setData({ ...data,meals: response })
+    fetcher(url + category, handleFetch).fetch()
+  }
+
+  let handleSearch = (search) => {
+    debugger;
+    const { ["Search meal by name"]: url } = mealdbkeys;
+    fetcher(url + search, ({ meals: response }) => {
+      debugger;
+      setData({ ...data, meals: response })
     }).fetch()
   }
 
@@ -35,6 +48,7 @@ function Homepath({ u_appstate }) {
 
   const { meals, categories } = data;
   return <div>
+    <Rowsearch handleSubmit={handleSearch} />
     <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
     <Wrappedrowlist list={meals} item={Cellmeal} />
   </div>
