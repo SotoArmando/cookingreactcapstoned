@@ -3,14 +3,14 @@ import './App.scss';
 import { Route, Switch } from 'react-router';
 import { useEffect, useRef, useState } from 'react';
 import { Defaultstate, Detectitems, fetcher, mealdbkeys } from './fetch';
-import Wrappedrowlist from './components/Wrappedrowlist';
-import Cellmeal from './components/Cellmeal';
+import Wrappedrowlist from './containers/Wrappedrowlist';
+import Cellmeal from './containers/Cellmeal';
 import Portraitmeal from './components/Portraitmeal';
 import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
-import Cellcategory from './components/Cellcategory';
+import Cellcategory from './containers/Cellcategory';
 import { connect } from 'react-redux';
-import Rowsearch from './components/Rowsearch';
-import Fixedrownav from './components/Fixedrownav';
+import Rowsearch from './containers/Rowsearch';
+import Fixedrownav from './containers/Fixedrownav';
 
 
 function Homepath({ u_appstate }) {
@@ -27,7 +27,7 @@ function Homepath({ u_appstate }) {
 
   let handleCategoryFilterUpdate = (category) => {
     window.scroll({
-      top: wrappedrowmealslatest.current.getBoundingClientRect().y,
+      top: wrappedrowmealslatest.current.getBoundingClientRect().y + 300,
       behavior: 'smooth'
     });
     document.querySelector("span").getBoundingClientRect()
@@ -37,7 +37,7 @@ function Homepath({ u_appstate }) {
 
   let handleSearch = (search) => {
     window.scroll({
-      top: wrappedrowmealslatest.current.getBoundingClientRect().y,
+      top: wrappedrowmealslatest.current.getBoundingClientRect().y + 300,
       behavior: 'smooth'
     });
     const { ["Search meal by name"]: url } = mealdbkeys;
@@ -90,4 +90,4 @@ function App() {
   );
 }
 
-export default App;
+export {App,Homepath,Portraitmealpath};

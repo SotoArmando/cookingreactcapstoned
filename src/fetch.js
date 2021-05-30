@@ -38,7 +38,7 @@ const Detectitems = (item) => {
 }
 
 function fetcher(url, call) {
-    debugger;
+    
     const options = {
         method: "GET",
         headers: {
@@ -49,7 +49,7 @@ function fetcher(url, call) {
 
     let d = {
         fetch: (u) => {
-            debugger;
+
             fetch(u || url, options)
                 .then((res) => res.json())
                 .then(call,

@@ -12,10 +12,12 @@ function createDefaultreducer(name) {
                 delete state[k];
                 return { ...state };
             case ("persist/REHYDRATE"): {
-                const { payload: { [name]: rehydrate, [name]: { loaded_at } } } = payload;
-                let expireDate = new Date(loaded_at);
-                let isExpired = expireDate.setSeconds(expireDate.getSeconds() + ExpireTime) < new Date();
-                return { ...(isExpired ? state : rehydrate) }
+                if (payload.hasOwnProperty("payload") && payload.payload != undefined) {
+                    const { payload: { [name]: rehydrate, [name]: { loaded_at } } } = payload;
+                    let expireDate = new Date(loaded_at);
+                    let isExpired = expireDate.setSeconds(expireDate.getSeconds() + ExpireTime) < new Date();
+                    return { ...(isExpired ? state : rehydrate) }
+                }
             }
             default:
                 return { ...state };

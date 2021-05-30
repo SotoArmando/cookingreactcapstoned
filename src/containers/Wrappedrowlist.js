@@ -7,7 +7,7 @@ function Wrappedrowlist({  item:Item , list, handleClick, basis = 43, marginh = 
     return <div className="corebox_16">
         <div className={`row  basis_${basis} nmar_l${marginh} nmar_r${marginh} nmar_t${marginv} nmar_b${marginv}`}>
         {
-            (list || []).map(e => Item({...e, handleClick, marginh, marginv}))
+            (list || []).map(e => Item({...e, handleClick, marginh, marginv}) )
         }
     </div>
     </div>
