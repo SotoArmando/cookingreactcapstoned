@@ -26,13 +26,20 @@ function Homepath({ u_appstate }) {
   }
 
   let handleCategoryFilterUpdate = (category) => {
-    wrappedrowmealslatest.current.scrollIntoView(true)
+    window.scroll({
+      top: wrappedrowmealslatest.current.getBoundingClientRect().y,
+      behavior: 'smooth'
+    });
+    document.querySelector("span").getBoundingClientRect()
     const { ["Filter by Category"]: url } = mealdbkeys;
     fetcher(url + category, handleFetch).fetch()
   }
 
   let handleSearch = (search) => {
-    wrappedrowmealslatest.current.scrollIntoView(true)
+    window.scroll({
+      top: wrappedrowmealslatest.current.getBoundingClientRect().y,
+      behavior: 'smooth'
+    });
     const { ["Search meal by name"]: url } = mealdbkeys;
     fetcher(url + search, ({ meals: response }) => {
       setData({ ...data, meals: response })
@@ -55,7 +62,7 @@ function Homepath({ u_appstate }) {
     <Wrappedrowlist list={categories} item={Cellcategory} marginv={27} marginh={21} handleClick={handleCategoryFilterUpdate} basis={40}/>
     <div className="corebox_2 items_center row f_1 f600">Latest</div>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} marginv={27} marginh={21}/>
-    <div ref={wrappedrowmealslatest} />
+    <div ref={wrappedrowmealslatest} className="" />
     <div  className="corebox_2 items_center row f_1 f600">Library</div>
     <Wrappedrowlist list={meals} item={Cellmeal} marginv={27} marginh={21}/>
    
