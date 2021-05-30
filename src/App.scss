@@ -859,12 +859,20 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
 
   @for $i from 0 through 50 {
     .basis_#{$i} {
+   
+
+      & > * {
+        flex-grow: 1;
+
+      }
+    }
+    .mbasis_#{$i} {
       display: flex;
       flex-wrap: wrap;
 
       & > * {
-        flex: auto auto ((1rem * core(25)) * core($i));
-        flex-grow: 0.2;
+        flex: 1 1 (1rem * core($i));
+        flex-grow: 1;
         box-sizing: border-box;
       }
     }
