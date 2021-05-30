@@ -343,7 +343,7 @@
   }
 
   #root {
-      overflow: hidden;
+    overflow: hidden;
   }
 
   input,
@@ -388,6 +388,7 @@
     // width: body_width(1,$bodywidth);
     z-index: 15;
     left: 0;
+    top: 0;
     will-change: transform, opacity, background-color;
   }
 
@@ -458,7 +459,20 @@
     ("4", rgb(229.5, 229.5, 229.5), 1rem * core(17)),
     ("5", #0bbdad, 1rem * core(17)), ("6", #0bbdad, 1rem * core(20));
 
-  $icons: ();
+  $icons: ("beef", url("./res/svg/mealscategories/beef.svg")),
+    ("breakfast", url("./res/svg/mealscategories/breakfast.svg")),
+    ("chicken", url("./res/svg/mealscategories/chicken.svg")),
+    ("dessert", url("./res/svg/mealscategories/dessert.svg")),
+    ("goat", url("./res/svg/mealscategories/goat.svg")),
+    ("lamb", url("./res/svg/mealscategories/lamb.svg")),
+    ("miscellaneous", url("./res/svg/mealscategories/miscellaneous.svg")),
+    ("pasta", url("./res/svg/mealscategories/pasta.svg")),
+    ("pork", url("./res/svg/mealscategories/pork.svg")),
+    ("seafood", url("./res/svg/mealscategories/seafood.svg")),
+    ("side", url("./res/svg/mealscategories/side.svg")),
+    ("starter", url("./res/svg/mealscategories/starter.svg")),
+    ("vegan", url("./res/svg/mealscategories/vegan.svg")),
+    ("vegetarian", url("./res/svg/mealscategories/vegetarian.svg"));
 
   .widthunset {
     width: unset;
@@ -528,7 +542,7 @@
     ("14", rgb(191.25, 191.25, 191.25)), ("15", rgb(191.25, 191.25, 191.25)),
     ("16", rgb(76.5, 76.5, 76.5)), ("17", rgb(102, 102, 102)), ("18", white),
     ("19", #0bbdad), ("20", rgb(83, 238, 191)), ("21", #969696);
-  $jpg-pic: ();
+  $jpg-pic: ("pic0",url("./res/jpg/pic_1.jpg")) ,("",url());
 
   .mobile_app_jpg {
     // background-position-y: 3.6rem * core(27);
@@ -700,9 +714,13 @@
       &.contain {
         background-size: contain !important;
       }
+
+    
     }
   }
-
+  .cover {
+    background-size: cover !important;
+  }
   .backsize_100 {
     background-size: 100% auto !important;
   }
