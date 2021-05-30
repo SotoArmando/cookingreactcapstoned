@@ -1,23 +1,20 @@
+import { createStore } from 'redux';
 
-import { combineReducers } from 'redux';
-import { createStore } from 'redux'
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import { reducers } from './index';
-import { persistStore, persistCombineReducers } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import { Defaultstate } from '../fetch';
 
-
 const persistConfig = {
-    key: 'root',
-    storage,
-    blacklist: []
-}
+  key: 'root',
+  storage,
+  blacklist: [],
+};
 
-const persistedReducer = persistCombineReducers(persistConfig, reducers)
-
+const persistedReducer = persistCombineReducers(persistConfig, reducers);
 
 export default () => {
-    let store = createStore(persistedReducer, { appstate: Defaultstate })
-    let persistor = persistStore(store)
-    return { store, persistor }
-}
+  const store = createStore(persistedReducer, { appstate: Defaultstate });
+  const persistor = persistStore(store);
+  return { store, persistor };
+};

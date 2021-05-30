@@ -1,39 +1,55 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux"
-import { useParams } from "react-router";
-import { fetcher, mealdbkeys } from "../fetch";
-import { createMapDispatchtoProps } from "../reducers/createDefaultreducer"
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { fetcher, mealdbkeys } from '../fetch';
+import { createMapDispatchtoProps } from '../reducers/createDefaultreducer';
 
-function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, strInstructions, strMeal, strMealThumb, strTags, strYoutube } }, u_appstate }) {
+function Portraitmeal({
+  focusedmealdetails: details,
+  Updateappstate,
+}) {
+  const [[loaded, setLoaded], { id }] = [useState(false), useParams()];
 
-    
-    let [[loaded, setLoaded], { id }] = [useState(false), useParams()];
+  const handleFetch = ({ meals: { 0: response } }) => {
+    Updateappstate('focusedmealdetails', response);
+  };
 
-    useEffect(() => {
-        if (loaded == false) {
-            
-            handleLoad();
-            setLoaded(true)
-        }
-    }, [loaded, setLoaded])
+  const handleLoad = () => {
+    const { 'Lookup full meal details by id': url } = mealdbkeys;
+    fetcher(url + (id), handleFetch).fetch();
+  };
 
-    const handleFetch = ({ meals: { 0: response } }) => {
-        u_appstate("focusedmealdetails", response)
+  useEffect(() => {
+    if (loaded === false) {
+      handleLoad();
+      setLoaded(true);
     }
+  }, [loaded, setLoaded]);
 
-    const handleLoad = () => {
-        const { ["Lookup full meal details by id"]: url } = mealdbkeys;
-        fetcher(url + (id), handleFetch).fetch()
-    }
-    return <div className="col">
-        {
-            [ strMeal,strArea, strCategory, strInstructions, strMealThumb, strTags, strYoutube ].map(e => <span>{e}</span>)
-        }
+  return (
+    <div className="col">
+      {
+                Object.entries(details).map(({ 0: k, 1: v }) => <span key={`Portraitmeal${k}`}>{v}</span>)
+            }
     </div>
+  );
 }
 
+Portraitmeal.propTypes = {
+  focusedmealdetails: PropTypes.shape({
+    strArea: PropTypes.string,
+    strCategory: PropTypes.string,
+    strInstructions: PropTypes.string,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    strTags: PropTypes.string,
+    strYoutube: PropTypes.string,
+  }).isRequired,
+  Updateappstate: PropTypes.func.isRequired,
+};
 
-const mapStatetoProps = ({ appstate }) => ({ appstate })
-const mapDispatchtoProps = createMapDispatchtoProps()
+const mapStatetoProps = ({ appstate: { focusedmealdetails } }) => ({ focusedmealdetails });
+const mapDispatchtoProps = createMapDispatchtoProps();
 
-export default connect(mapStatetoProps, mapDispatchtoProps)(Portraitmeal)
+export default connect(mapStatetoProps, mapDispatchtoProps)(Portraitmeal);
