@@ -10,7 +10,7 @@ function Cellmeal({ strMeal, strMealThumb, idMeal, marginh, marginv }) {
         history.push('/recipe/' + idMeal)
     }
 
-    return <div className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick}>
+    return <div  data-testid="Cellmeal" className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick}>
         <div className="allsize back_0 col">
             <div className="corebox_12 cover" style={{ backgroundImage: `url(${strMealThumb})` }} />
             <div className="col pad_24">

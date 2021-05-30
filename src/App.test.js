@@ -1,20 +1,18 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { act } from "react-dom/test-utils";
+import { render, unmountComponentAtNode } from "react-dom";
 import React from 'react';
-import { unmountComponentAtNode } from 'react-dom';
-import { connect } from 'react-redux';
+
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Homepath, Portraitmealpath, App } from './App';
-import Portraitmeal from './components/Portraitmeal';
-import Cellcategory from './containers/Cellcategory';
-import Cellmeal from './containers/Cellmeal';
-import Fixedrownav from './containers/Fixedrownav';
-import Rowsearch from './containers/Rowsearch';
-import Wrappedrowlist from './containers/Wrappedrowlist';
-import { Defaultstate } from './fetch';
-import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
+
+
 import linkpersistedstore from './reducers/store';
+import { waitFor } from "@testing-library/dom";
+import { fireEvent, screen } from "@testing-library/dom";
+import { App } from "./App";
+import { createEvent } from "@testing-library/dom";
+
 
 let container = null;
 beforeEach(() => {
@@ -32,100 +30,74 @@ afterEach(() => {
   jest.useRealTimers();
 });
 
-test('renders all containers', () => {
-  let datasample_0 = [{
-    strMeal: "asd", strMealThumb: "asd", idMeal: 1
-  }]
-  let { 0: components, 1: props } = {
-    0: [
-      Cellcategory,
-      Cellmeal,
-      Fixedrownav,
-      Wrappedrowlist,
-      Rowsearch
-    ],
-    1: [
-      { strCategory: "Category x" },
-      { strMeal: "Nice recipe 0", strMealThumb: "google.com", idMeal: "0" },
-      { height: 4 },
-      { list: datasample_0, item: Cellmeal },
-      { handleSubmit: (search) => { } }
-    ]
-  }
-
-  render(components.map((View, index) => <View {...props[index]} />));
-});
-
-test('renders all components', () => {
-  let { 0: containers, 1: props } = {
-    0: [
-      Portraitmeal,
-    ],
-    1: [
-      { ...Defaultstate, u_appstate: () => { } },
-    ]
-  }
-
+test('fetchs and loads Filter by Category,List all meal categories, List all Latest Meals ', async () => {
   const { store, persistor } = linkpersistedstore();
-
-  render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {containers.map((View, index) => <View {...props[index]} />)}
-        </PersistGate>
-      </Provider>
-    </React.StrictMode>
-  );
-
-});
-
-test('renders all paths', () => {
-  const { store, persistor } = linkpersistedstore();
-  let { 0: paths, 1: props } = {
-    0: [
-      Portraitmealpath,
-      connect(() => ({}), createMapDispatchtoProps())(Homepath),
-    ],
-    1: [
-      {},
-      { ...Defaultstate, u_appstate: () => { } },
-    ]
-  }
-
-  render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {paths.map((View, index) => <View {...props[index]} />)}
-        </PersistGate>
-      </Provider>
-    </React.StrictMode>
-  );
-
-});
-
-test('fetchs and loads Filter by Category,List all meal categories, Filter by Latest ', async () => {
-  const { store, persistor } = linkpersistedstore();
-
-  render(
-    <React.StrictMode>
+  await act(async () => {
+    render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </PersistGate>
-      </Provider>
-    </React.StrictMode>
-    , container);
+      </Provider>, container)
+  })
 
-  jest.useFakeTimers();
-  jest.runAllTimers();
-  
-  act(() => {
-    /* fire events that update state */
-  });
-  expect(document.querySelectorAll(".row.nmar_l21.nmar_r21.nmar_t27.nmar_b27").length).toBe(3)
-  
+  await waitFor(() => { expect(container.querySelectorAll('[data-testid="Cellcategory"]').length).toBe(14) })
+
+  await waitFor(() => expect(container.querySelectorAll(' [data-testid="WrappedrowlistLatest"] [data-testid="Cellmeal"]').length).toBeGreaterThan(0)
+  )
+  await waitFor(() => expect(container.querySelectorAll(' [data-testid="Wrappedrowlistlibrary"] [data-testid="Cellmeal"]').length).toBeGreaterThan(0))
 })
+
+it('fetchs filter by search ', async () => {
+  const { store, persistor } = linkpersistedstore();
+  await act(async () => {
+    render(
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>, container)
+  })
+
+  let rowsearchinput = container.querySelector('[data-testid="Rowsearchinput"]')
+  rowsearchinput.value = 'Rice'
+  fireEvent.keyDown(rowsearchinput, { key: 'Enter', code: 'Enter' })
+
+  expect(
+    container.querySelectorAll(' [data-testid="Wrappedrowlistlibrary"] [data-testid="Cellmeal"]').length).toBe(0)
+
+  await waitFor(() => expect(container.querySelectorAll(' [data-testid="Wrappedrowlistlibrary"] [data-testid="Cellmeal"]').length).toBeGreaterThan(0))
+
+})
+
+
+it('filters by category', async () => {
+  const { store, persistor } = linkpersistedstore();
+  await act(async () => {
+    render(
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>, container)
+  })
+
+  const [category_0] = await waitFor(() => screen.getAllByTestId("Cellcategory"));
+
+  const myEvent = createEvent.click(category_0, { button: 2 })
+  fireEvent(category_0, myEvent)
+
+  await waitFor(() => expect(container.querySelectorAll(' [data-testid="Wrappedrowlistlibrary"] [data-testid="Cellmeal"]').length).toBeGreaterThan(0))
+
+  const myEvent1 = createEvent.click(category_0, { button: 2 })
+  fireEvent(category_0, myEvent1)
+
+  await waitFor(() => expect(container.querySelectorAll(' [data-testid="Wrappedrowlistlibrary"] [data-testid="Cellmeal"]').length).toBeGreaterThan(0))
+})
+
