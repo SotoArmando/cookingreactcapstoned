@@ -1,10 +1,16 @@
+/* stylelint-disable csstree/validator  */
+/* stylelint-disable function-calc-no-invalid */
+
 @function core($base) {
   $result: 0.009658113525734344;
+
   @for $_ from 1 through $base {
     $result: $result * 1.1875;
   }
+
   @return $result;
 }
+
 @function core_font($base: 0) {
   $result: core(27 + $base);
 
@@ -23,6 +29,7 @@
   .nav_body {
     width: $bodywidth !important;
   }
+
   .bodywidth_x3 {
     min-width: $bodywidth * 3;
   }
@@ -37,16 +44,16 @@
     }
   }
 
-  .ratio_0 {
-    min-height: 14rem * core_font(2);
-    background-color: rgb(230, 230, 230);
-    position: relative;
-    // transform: scale(1 - core(3));
-    // background: url(../res/pic/pic2.jpg);
-    background-size: cover !important;
-    background-position: center;
-    // margin: 0 (core(14) * 1rem);
-  }
+  // .ratio_0 {
+  //   min-height: 1rem * (14 * core_font(2));
+  //   background-color: rgb(230, 230, 230);
+  //   position: relative;
+  //   // transform: scale(1 - core(3));
+  //   // background: url(../res/pic/pic2.jpg);
+  //   background-size: cover !important;
+  //   background-position: center;
+  //   // margin: 0 (core(14) * 1rem);
+  // }
 
   .underline {
     text-decoration: underline;
@@ -113,7 +120,7 @@
     }
 
     .boxshadow_#{$i} {
-      box-shadow: 0px 0px 1rem * core($i) rgba(0, 0, 0, 0.24);
+      box-shadow: 0 0 1rem * core($i) rgba(0, 0, 0, 0.24);
     }
     .borderradius_#{$i} {
       border-radius: 3.6rem * core($i);
@@ -135,6 +142,7 @@
   @for $i from 0 through 50 {
     .f_#{$i} {
       font-size: 1rem * core_font($i);
+
       @for $ii from 0 through 50 {
         &.lh_#{$ii} {
           line-height: (1rem * core_font($i)) * core($ii + 27);
@@ -169,9 +177,7 @@
       z-index: $i !important;
     }
   }
-  .z_size_1 {
-    transform: scaleX(1 - core(3));
-  }
+
   @for $i from 1 through 50 {
     .pad_t#{$i} {
       padding-top: 1rem * core_font($i - 27);
@@ -269,6 +275,7 @@
   .tend {
     text-align: right;
   }
+
   .items_start {
     align-items: flex-start;
   }
@@ -306,6 +313,7 @@
   .tjust {
     text-align: justify;
   }
+
   .bodywidth {
     width: body_width(1, $bodywidth);
     max-width: body_width(1, $bodywidth);
@@ -318,20 +326,17 @@
     will-change: opacity, transform;
   }
 
-  .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-exit-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-appear-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-exit-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-enter-done
-    .disable_opasity:not(.no_disable).enable
-    .mobile_app_detail-appear-done
-    .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-enter-done .disable_opasity:not(.no_disable).enable {
-    transition-delay: 357ms;
-    opacity: 1;
-    transform: translateY(0);
-  }
+  // .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app-exit-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app-appear-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app_detail-exit-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app_detail-enter-done .disable_opasity:not(.no_disable).enable .mobile_app_detail-appear-done .disable_opasity:not(.no_disable).enable,
+  // .mobile_app_detail-enter-done .disable_opasity:not(.no_disable).enable {
+  //   transition-delay: 357ms;
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
 
   body {
     width: body_width(1, $bodywidth);
@@ -377,6 +382,7 @@
     &:first-child {
       padding-left: unset !important;
     }
+
     &:last-child {
       padding-right: unset !important;
     }
@@ -402,6 +408,7 @@
     text-decoration: none;
     cursor: pointer !important;
   }
+
   .capitalize {
     text-transform: capitalize;
   }
@@ -413,6 +420,7 @@
   .relative {
     position: relative;
   }
+
   .absolute {
     position: absolute;
     left: 0;
@@ -424,6 +432,7 @@
       bottom: 0;
     }
   }
+
   .allsize {
     height: 100%;
     width: 100%;
@@ -433,9 +442,11 @@
   .allwidth {
     width: 100%;
   }
+
   .justify {
     text-align: justify !important;
   }
+
   .notselection {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -477,6 +488,7 @@
   .widthunset {
     width: unset;
   }
+
   .transition_0 {
     transition: color 257ms;
     will-change: color;
@@ -487,26 +499,26 @@
     min-height: 100vh;
   }
 
-  .section_c0 {
-    opacity: 0;
-    -webkit-opacity: 0;
-    will-change: opacity, transform, -webkit-transition, -webkit-transform;
+  // .section_c0 {
+  //   opacity: 0;
+  //   -webkit-opacity: 0;
+  //   will-change: opacity, transform, -webkit-transition, -webkit-transform;
+  //   transition: opacity 300ms, transform 300ms;
+  //   -webkit-transition: opacity 300ms, transform 300ms;
+  //   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  //   -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  //   transform: translateY(3.6rem * core_font(5));
+  //   -webkit-transform: translateY(3.6rem * core_font(5));
 
-    transition: opacity 300ms, transform 300ms;
-    -webkit-transition: opacity 300ms, transform 300ms;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    transform: translateY(3.6rem * core_font(5));
-    -webkit-transform: translateY(3.6rem * core_font(5));
-    &.active {
-      opacity: 1;
-      -webkit-opacity: 1;
-      transform: translateY(0);
-      -webkit-transform: translateY(0);
-    }
-  }
+  //   &.active {
+  //     opacity: 1;
+  //     -webkit-opacity: 1;
+  //     transform: translateY(0);
+  //     -webkit-transform: translateY(0);
+  //   }
+  // }
 
-  $back-colors: ("0", #f9f9f9), ("1", #008000), ("2", #ffffff),
+  $back-colors: ("0", #f9f9f9), ("1", #008000), ("2", #fff),
     (
       "2b",
       (linear-gradient(-45deg, rgb(252.5, 252.5, 255), rgb(255, 252.5, 252.5)))
@@ -515,7 +527,7 @@
       "2c",
       (linear-gradient(-45deg, rgb(252.5, 252.5, 255), rgb(255, 252.5, 252.5)))
     ),
-    ("2d", (linear-gradient(0, rgb(250, 235, 235), rgb(245, 245, 255)))),
+    ("2d", (linear-gradient(0deg, rgb(250, 235, 235), rgb(245, 245, 255)))),
     ("3", rgba(56, 56, 56, 0.04)), ("4", #fde07b), ("5", #ffdc63),
     ("6", #c4c4c4), ("7", #fee580), ("8", rgba(254, 229, 128, 0.14)),
     ("mask_pink", #e490b7), ("green", rgb(69, 208, 156)),
@@ -542,7 +554,7 @@
     ("14", rgb(191.25, 191.25, 191.25)), ("15", rgb(191.25, 191.25, 191.25)),
     ("16", rgb(76.5, 76.5, 76.5)), ("17", rgb(102, 102, 102)), ("18", white),
     ("19", #0bbdad), ("20", rgb(83, 238, 191)), ("21", #969696);
-  $jpg-pic: ("pic0",url("./res/jpg/pic_1.jpg")) ,("",url());
+  $jpg-pic: ("pic0", url("./res/jpg/pic_1.jpg")), ("", url());
 
   .mobile_app_jpg {
     // background-position-y: 3.6rem * core(27);
@@ -557,6 +569,7 @@
     left: 0;
     z-index: -1;
   }
+
   &.hover {
     position: relative;
 
@@ -575,10 +588,12 @@
         bottom: 0;
         height: unset;
       }
+
       &.bottom.pointer {
         pointer-events: unset;
       }
     }
+
     &.inverse .to_hover {
       opacity: 1;
       width: 100.2%;
@@ -590,16 +605,20 @@
     &:hover > .to_hover {
       opacity: 1;
     }
+
     &.inverse:hover > .to_hover {
       opacity: 0;
     }
   }
+
   .novisible {
     opacity: 0;
   }
+
   .nopointerevents {
     pointer-events: none;
   }
+
   &.hover_b {
     & .to_hover_b {
       opacity: 0;
@@ -695,12 +714,14 @@
 
   @each $pic in $jpg-pic {
     &.pic_#{nth($pic,1)} {
-      background: linear-gradient(
+      background:
+        linear-gradient(
           180deg,
           rgba(0, 0, 0, 0.24) -30%,
           rgba(0, 0, 0, 0) 98.35%
         ),
-        nth($pic, 2), #f7fafc;
+        nth($pic, 2),
+        #f7fafc;
       background-repeat: no-repeat;
       background-position: center;
 
@@ -714,13 +735,13 @@
       &.contain {
         background-size: contain !important;
       }
-
-    
     }
   }
+
   .cover {
     background-size: cover !important;
   }
+
   .backsize_100 {
     background-size: 100% auto !important;
   }
@@ -751,6 +772,7 @@
     // image-rendering:;
     // image-rendering: -webkit-optimize-contrast;
   }
+
   .fix_16_9_0 {
     margin: -1px;
   }
@@ -775,12 +797,14 @@
       &:active {
         border: nth($border, 3) solid nth($border, 2);
       }
+
       &:focus {
         border: nth($border, 3) solid nth($border, 2);
         outline: none;
       }
     }
   }
+
   @each $color in $back-colors {
     input[type=checkbox]:checked.upback_#{nth($color,1)} {
       background-color: nth($color, 2);
@@ -821,17 +845,21 @@
     transform: translateY(-100%);
     opacity: 1;
     transition: transform 357ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
     &.active {
       transform: translateY(0);
       opacity: 1;
     }
   }
+
   .btn {
     touch-action: manipulation;
   }
+
   .btn:hover {
     cursor: pointer !important;
   }
+
   .btn_u:hover {
     cursor: pointer !important;
     text-decoration: underline !important;
@@ -839,18 +867,20 @@
 }
 
 $hover-msg: (
-    "more",
-    "Combine 2 cups bread flour.\a\a Shape the dough into a ball. \a\a...\a\a 7 Steps \a Click for more details"
-  ),
+  "more",
+  "Combine 2 cups bread flour.\a\a Shape the dough into a ball. \a\a...\a\a 7 Steps \a Click for more details"
+),
   ("more_1", "Click for more details");
 $hover-msg-mobile: ("more", "Tap again for more details"),
   ("more_1", "Click for more details");
 
 @media (orientation: portrait), (max-width: 1000px) {
   @include app(100vw, 1);
+
   .good_display {
     background-color: rgba(255, 255, 255, 0.86);
   }
+
   #root {
     overflow-x: hidden;
   }
@@ -859,11 +889,8 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
 
   @for $i from 0 through 50 {
     .basis_#{$i} {
-   
-
       & > * {
         flex-grow: 1;
-
       }
     }
     .mbasis_#{$i} {
@@ -896,10 +923,6 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
 
   .mobilehide {
     display: none;
-  }
-
-  html {
-    font-size: 1rem * core(27);
   }
 
   .box {
@@ -995,6 +1018,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
     }
     &.box.corebox_x#{$i} {
       width: 3.6rem * core($i + 23 - 5);
+
       &:active,
       &:focus {
         width: 3.6rem * core($i + 23 - 5);
@@ -1012,6 +1036,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
     flex-basis: 100%;
     flex-wrap: wrap;
   }
+
   .ratio_0 {
     min-height: body_width(2, $bodywidth) * core_font(1);
     // transform: scale(1 - core(3));
@@ -1046,6 +1071,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
       }
     }
   }
+
   html {
     overflow-x: hidden;
     font-size: 100% * core(27);
