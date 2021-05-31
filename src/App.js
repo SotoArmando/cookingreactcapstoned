@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Wrappedrowlist from './appcontainers/Wrappedrowlist';
-import Cellmeal from './appcontainers/Cellmeal';
-import Portraitmeal from './appcomponents/Portraitmeal';
-import Cellcategory from './appcontainers/Cellcategory';
-import Rowsearch from './appcontainers/Rowsearch';
-import Fixedrownav from './appcontainers/Fixedrownav';
+import Wrappedrowlist from './containers/Wrappedrowlist';
+import Cellmeal from './containers/Cellmeal';
+import Portraitmeal from './components/Portraitmeal';
+import Cellcategory from './containers/Cellcategory';
+import Rowsearch from './containers/Rowsearch';
+import Fixedrownav from './containers/Fixedrownav';
 import {
   Defaultstate, Detectitems, fetcher, mealdbkeys,
 } from './fetch';
