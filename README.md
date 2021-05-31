@@ -89,9 +89,9 @@ npm test
 
 👤 **Author1**
 
-- Github: [@githubhandle](https://github.com/Sotoarmando)
-- Twitter: [@twitterhandle](https://twitter.com/sotoarmando)
-- Linkedin: [linkedin](https://linkedin.com/armandosotomelo)
+- Github: [@Sotoarmando](https://github.com/Sotoarmando)
+- Twitter: [@Sotoarmando](https://twitter.com/sotoarmando)
+- Linkedin: [Armando Soto](https://linkedin.com/armandosotomelo)
 
 
 ## 🤝 Contributing
