@@ -35,7 +35,6 @@ function Homepath({ Updateappstate }) {
       top: wrappedrowmealslatest.current.getBoundingClientRect().y + 300,
       behavior: 'smooth',
     });
-    document.querySelector('span').getBoundingClientRect();
     const { 'Filter by Category': url } = mealdbkeys;
     fetcher(url + category, handleFetch).fetch();
   };

@@ -20,7 +20,7 @@ ReactDOM.render(
       </PersistGate>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.body.children[1],
 );
 
 // If you want to start measuring performance in your app, pass a function
