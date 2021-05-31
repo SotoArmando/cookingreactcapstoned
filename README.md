@@ -74,6 +74,7 @@ npm run
 ### Usage
 
 "./": Homepath (Latest Recipes, Recipes Categories and Search Filter)
+
 "./recipe/id": Recipepath (Fetches recipe id and display details )
 
 
