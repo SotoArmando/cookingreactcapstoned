@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export { App, Homepath, Portraitmealpath };
+export default App;

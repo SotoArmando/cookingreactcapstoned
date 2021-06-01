@@ -12,12 +12,13 @@ function createDefaultreducer(name) {
       case (`Delete${name}`):
         return { ...state, [k]: undefined };
       case ('persist/REHYDRATE'): {
-        if ('payload' in Payload && Payload.payload !== undefined) {
-          const { payload: { [name]: rehydrate, [name]: { LoadedAt } } } = Payload;
-          const expireDate = new Date(LoadedAt);
-          const isExpired = expireDate.setSeconds(expireDate.getSeconds() + ExpireTime) < new Date();
-          return { ...(isExpired ? state : rehydrate) };
-        }
+        debugger;
+        const { payload: { [name]: rehydrate, [name]: { LoadedAt } } =
+          { [name]: { LoadedAt: new Date().toISOString() }, [name]: rehydrate } } = Payload;
+        const expireDate = new Date(LoadedAt);
+        const isExpired = expireDate.setSeconds(expireDate.getSeconds() + ExpireTime) < new Date();
+        return { ...(isExpired ? state : (Object.keys(rehydrate).length > 1 ? rehydrate : state)) };
+
         break;
       }
 
