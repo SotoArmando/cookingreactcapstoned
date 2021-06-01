@@ -29,11 +29,53 @@ function Portraitmeal({
     return () => { isMounted = false; };
   }, []);
 
+  const [{ strMeal,
+    strArea,
+    strInstructions,
+    strMealThumb,
+    strTags,
+    strYoutube,
+    strSource }, ingredients, measures] = [
+      details,
+      Object.entries(details).filter(([k, v]) => k.includes("strIngredient") && (v.trim() != "")),
+      Object.entries(details).filter(([k, v]) => (k.includes("strMeasure")
+        && (v.trim() != "")))
+    ]
+  debugger;
+
   return (
-    <div className="col" data-testid="Portraitmeal">
-      {
-                Object.entries(details).map(({ 0: k, 1: v }) => <span key={`Portraitmeal${k}`}>{v}</span>)
-            }
+    <div className="row basis_46 grow back_3">
+      <div className="col relative">
+        <div className="corebox_18 mobilecorebox_14 cover fixed halfbodywidth" style={{ backgroundImage: `url(${strMealThumb})` }} />
+      </div>
+      <div className="col pad_33 back_2" data-testid="Portraitmeal">
+        <span className="f_4 f600">{strMeal}</span>
+        <span>{strArea}</span>
+        <span className="btn_u">{strSource}</span>
+        <span className="f_0 lh_3 corebox_11 center">{strInstructions}</span>
+
+        <div className="row basis_42 grow pad_t27 pad_b27">
+          <div className="col">
+            {ingredients.map(([k, v]) =>
+              <span className="row items_center corebox_0">{v}</span>)}
+          </div>
+          <div className="col">
+            {measures.map(([k, v]) =>
+              <span className="row items_center corebox_0">{v}</span>)}
+          </div>
+
+
+        </div>
+        <div className="row">
+          {
+
+            (strTags || '').split(',').map((e) =>
+              <span className="pad_r30 center f500">{e}</span>)
+          }
+        </div>
+        <span>{strYoutube}</span>
+
+      </div>
     </div>
   );
 }
@@ -50,6 +92,8 @@ Portraitmeal.propTypes = {
   }).isRequired,
   Updateappstate: PropTypes.func.isRequired,
 };
+
+
 
 const mapStatetoProps = ({ appstate: { focusedmealdetails } }) => ({ focusedmealdetails });
 const mapDispatchtoProps = createMapDispatchtoProps();
