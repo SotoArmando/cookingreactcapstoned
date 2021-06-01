@@ -107,5 +107,5 @@ it('Should fetch and display focusedmealdetails details', async () => {
   });
 
   await waitFor(() => expect(screen.getByTestId('Portraitmeal')).toBeInTheDocument());
-  await waitFor(() => expect(screen.getByTestId('Portraitmeal').children.length).toBe(51));
+  await waitFor(() => expect(screen.getByTestId('Portraitmeal').children.length).toBe(7));
 });
