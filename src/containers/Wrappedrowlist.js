@@ -20,8 +20,8 @@ function Wrappedrowlist({
 }
 
 Wrappedrowlist.propTypes = {
-  item: PropTypes.func.isRequired,
-  list: PropTypes.array.isRequired,
+  item: PropTypes.func,
+  list: PropTypes.array,
   handleClick: PropTypes.func,
   basis: PropTypes.number,
   marginh: PropTypes.number,
@@ -35,6 +35,8 @@ Wrappedrowlist.defaultProps = {
   marginh: 12,
   marginv: 12,
   testid: 'Wrappedrowlist',
+  item: () => { },
+  list: [],
 };
 
 export default Wrappedrowlist;

@@ -21,14 +21,16 @@ function Portraitmeal({
   };
 
   useEffect(() => {
-    if (loaded === false) {
+    let isMounted = true;
+    if (loaded === false && isMounted) {
       handleLoad();
       setLoaded(true);
     }
-  }, [loaded, setLoaded]);
+    return () => { isMounted = false; };
+  }, []);
 
   return (
-    <div className="col">
+    <div className="col" data-testid="Portraitmeal">
       {
                 Object.entries(details).map(({ 0: k, 1: v }) => <span key={`Portraitmeal${k}`}>{v}</span>)
             }

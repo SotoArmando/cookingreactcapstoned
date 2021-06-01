@@ -1,10 +1,11 @@
-import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { rootReducer } from '../reducers';
 
-export const renderWithState = (
+/* eslint react/prop-types: 0 */
+
+const renderWithState = (
   ui,
   { initialState, ...renderOptions } = {},
 ) => {
@@ -15,3 +16,5 @@ export const renderWithState = (
 
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 };
+
+export default renderWithState;
