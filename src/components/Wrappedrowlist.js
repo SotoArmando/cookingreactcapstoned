@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Wrappedrowlist({  item:Item , list, handleClick }) {
+function Wrappedrowlist({  item:Item , list, handleClick, itemBoundings}) {
     console.log("Wrappedrowlist list ",list)
 
     return <div className="row basis_43 ">

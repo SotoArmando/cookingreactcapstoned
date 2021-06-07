@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react';
 import { Defaultstate, Detectitems, fetcher, mealdbkeys } from './fetch';
 import Wrappedrowlist from './components/Wrappedrowlist';
 import Cellmeal from './components/Cellmeal';
-import Portraitmeal from './components/Portraitmeal';
+
 import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
 import Cellcategory from './components/Cellcategory';
 import { connect } from 'react-redux';
 import Rowsearch from './components/Rowsearch';
+import Portraitmeals from './components/Portraitmeals';
+import Headnavigator from './containers/Headnavigator';
 
 
 function Homepath({ u_appstate }) {
@@ -52,18 +54,20 @@ function Homepath({ u_appstate }) {
     <Wrappedrowlist list={meals} item={Cellmeal} />
     <span>Latest</span>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} />
+
+    
   </div>
 }
 
 function Portraitmealpath() {
   return <div className="col">
-    <Portraitmeal />
+    <Portraitmeals />
   </div>
 }
 
 function App() {
   let paths = {
-    "/recipe/:id": Portraitmealpath,
+    "/recipe/:id": Portraitmeals,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
   return (
