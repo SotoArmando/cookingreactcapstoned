@@ -37,9 +37,9 @@ function Portraitmeal({
     strYoutube,
     strSource }, ingredients, measures] = [
       details,
-      Object.entries(details).filter(([k, v]) => k.includes("strIngredient") && (v.trim() != "")),
+      Object.entries(details).filter(([k, v]) => k.includes("strIngredient") && ((v || "").trim() != "")),
       Object.entries(details).filter(([k, v]) => (k.includes("strMeasure")
-        && (v.trim() != "")))
+        && ((v || "").trim() != "")))
     ]
   debugger;
 
