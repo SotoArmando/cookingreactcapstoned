@@ -48,7 +48,7 @@ function Homepath({ u_appstate }) {
 
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
-    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
+    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate}  />
     <Wrappedrowlist list={meals} item={Cellmeal} />
     <span>Latest</span>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} />
