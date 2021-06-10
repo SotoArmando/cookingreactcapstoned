@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import Rowsearch from './components/Rowsearch';
 import Portraitmeals from './components/Portraitmeals';
 import Headnavigator from './containers/Headnavigator';
+import Portraitprofile from './components/Portraitprofile';
 
 
 function Homepath({ u_appstate }) {
@@ -68,6 +69,7 @@ function Portraitmealpath() {
 function App() {
   let paths = {
     "/recipe/:id": Portraitmeals,
+    "/profile/:id": Portraitprofile,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
   return (

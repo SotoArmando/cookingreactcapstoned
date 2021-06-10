@@ -451,7 +451,7 @@
       ("4", rgb(229.5, 229.5, 229.5), 1rem * core(17)), ("5", #0bbdad, 1rem * core(17)),
       ("6",  #0bbdad, 1rem * core(20));
 
-  $icons: ();
+  $icons: ("circle", url(./assets/svg/cleancircle.svg)), ("circle_1", url(./assets/svg/cleancircle.svg));
 
   .transition_0 {
       transition: color 257ms;

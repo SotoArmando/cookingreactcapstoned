@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { fetcher, mealdbkeys } from "../fetch";
 
+
 function Cellmeal({ strMeal, strMealThumb, idMeal, cellBoundings }) {
 
     let [history] = [useHistory()]

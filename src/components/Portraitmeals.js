@@ -3,11 +3,15 @@ import { connect } from "react-redux"
 import { useParams } from "react-router";
 import { fetcher, mealdbkeys } from "../fetch";
 import { createMapDispatchtoProps } from "../reducers/createDefaultreducer"
+import Celltimer from "./Celltimer";
+import Rowcomment from "./Rowcomment";
+import Wrappedrowlist from "./Wrappedrowlist";
+import { useHistory } from "react-router";
 
 function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, strInstructions, strMeal, strMealThumb, strTags, strYoutube } }, u_appstate }) {
 
     debugger;
-    let [[loaded, setLoaded], { id }] = [useState(false), useParams()];
+    let [[loaded, setLoaded], { id }, history] = [useState(false), useParams(), useHistory()];
 
     useEffect(() => {
         if (loaded == false) {
@@ -26,10 +30,21 @@ function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, 
         const { ["Lookup full meal details by id"]: url } = mealdbkeys;
         fetcher(url + (id), handleFetch).fetch()
     }
+
+    const handleAuthorClick = () => {
+        history.push('/profile/' + 1)
+    }
     return <div className="col">
+        <div className="btn_u " onClick={handleAuthorClick}>Author: XMan</div>
         {
-            [ strMeal,strArea, strCategory, strInstructions, strMealThumb, strTags, strYoutube ].map(e => <span>{e}</span>)
+            [strMeal, strArea, strCategory, strInstructions, strMealThumb, strTags, strYoutube].map(e => <span>{e}</span>)
         }
+        <Wrappedrowlist list={"0".repeat(10).split("")} item={Celltimer} basis={40} />
+
+
+        <Rowcomment />
+        <Rowcomment />
+        <Rowcomment />
     </div>
 }
 
