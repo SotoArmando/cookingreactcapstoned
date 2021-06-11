@@ -25,10 +25,10 @@ function Rownavigatormenu() {
             <Cellprofilepicture size={30} />
             <span className="corebox_x5 corebox_3 center  btn_u hover relative">
                 Profile
-                <div className="to_hover absolute corebox_10 back_5 col top left">
+                <div className="to_hover absolute corebox_12 corebox_x7 back_0 col right marcore_t26">
                     {
                         ["Assistant", "Option", "Option", "Option"].
-                            map(e => <span onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)
+                            map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u">{e}</span>)
                     }
                 </div>
             </span>
