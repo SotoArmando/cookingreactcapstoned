@@ -30,7 +30,7 @@ Wrappedrowlist.propTypes = {
 };
 
 Wrappedrowlist.defaultProps = {
-  handleClick: () => { },
+  handleClick: false,
   basis: 43,
   marginh: 12,
   marginv: 12,
