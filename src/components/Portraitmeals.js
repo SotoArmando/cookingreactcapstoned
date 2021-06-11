@@ -7,6 +7,7 @@ import Celltimer from "./Celltimer";
 import Rowcomment from "./Rowcomment";
 import Wrappedrowlist from "./Wrappedrowlist";
 import { useHistory } from "react-router";
+import Rowcommentinput from "./Rowcommentinput";
 
 function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, strInstructions, strMeal, strMealThumb, strTags, strYoutube } }, u_appstate }) {
 
@@ -45,6 +46,7 @@ function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, 
         <Rowcomment />
         <Rowcomment />
         <Rowcomment />
+        <Rowcommentinput/>
     </div>
 }
 

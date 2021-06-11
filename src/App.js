@@ -13,6 +13,11 @@ import Rowsearch from './components/Rowsearch';
 import Portraitmeals from './components/Portraitmeals';
 import Headnavigator from './containers/Headnavigator';
 import Portraitprofile from './components/Portraitprofile';
+import Rownavigatormenu from './components/Rownavigatormenu';
+import Portraitprofilesettings from './components/Portraitprofilesettings';
+import Portraitprofilelibrary from './components/Portraitprofilesettings';
+import Portraitassistant from './components/Portraitassistant';
+import Portraitassistantrecipe from './components/Portraitassistantrecipe';
 
 
 function Homepath({ u_appstate }) {
@@ -70,10 +75,15 @@ function App() {
   let paths = {
     "/recipe/:id": Portraitmeals,
     "/profile/:id": Portraitprofile,
+    "/settings": Portraitprofilesettings,
+    "/library": Portraitprofilelibrary,
+    "/assistant": Portraitassistant,
+    "/assistant/recipe/:id": Portraitassistantrecipe,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
   return (
     <div className="App">
+      <Rownavigatormenu />
       <Switch >
         {Object.entries(paths).map(({ 0: route, 1: View }) => <Route path={route} ><View /></Route>)}
       </Switch>

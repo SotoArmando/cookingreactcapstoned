@@ -1,6 +1,6 @@
 import Cellmeal from "./Cellmeal"
 
-export default function Portraitprofile() {
+export default function Portraitprofilesettings() {
     let backgroundurl = 'url(https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture-768x768.jpg)'
     return <div className="col">
 
