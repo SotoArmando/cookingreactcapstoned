@@ -1,3 +1,5 @@
-export default function Cellgrocerylist({strCategory, handleClick, cellBoundings}){
-    return <div className="btn_u" onClick={() => handleClick(strCategory)}>{strCategory}</div>
+export default function Cellgrocerylist({ }) {
+    return <div className="btn_u" >
+        Cellgrocerylist
+    </div>
 }

@@ -11,7 +11,6 @@ import Cellcategory from './components/Cellcategory';
 import { connect } from 'react-redux';
 import Rowsearch from './components/Rowsearch';
 import Portraitmeals from './components/Portraitmeals';
-import Headnavigator from './containers/Headnavigator';
 import Portraitprofile from './components/Portraitprofile';
 import Rownavigatormenu from './components/Rownavigatormenu';
 import Portraitprofilesettings from './components/Portraitprofilesettings';
@@ -75,10 +74,10 @@ function App() {
   let paths = {
     "/recipe/:id": Portraitmeals,
     "/profile/:id": Portraitprofile,
-    "/settings": Portraitprofilesettings,
-    "/library": Portraitprofilelibrary,
-    "/assistant": Portraitassistant,
+    "/profile/settings": Portraitprofilesettings,
+    "/profile/library": Portraitprofilelibrary,
     "/assistant/recipe/:id": Portraitassistantrecipe,
+    "/assistant": Portraitassistant,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
   return (
