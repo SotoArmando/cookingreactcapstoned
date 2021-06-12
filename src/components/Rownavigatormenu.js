@@ -1,13 +1,15 @@
 import Cellprofilepicture from "./Cellprofilepicture";
 import { withRouter } from "react-router";
 
-function Rownavigatormenu({location: {pathname}, history}) {
+function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength } }) {
 
     const handleClick = (string) => {
         switch (string) {
             case ("Assistant"): history.push('/assistant'); break;
             case ("Settings"): history.push('/profile/settings'); break;
             case ("Library"): history.push('/profile/library'); break;
+            case ("Save"): history.push('/profile/library'); break;
+            case ("Back"): history.goBack(); break;
             default: history.push('/'); break;
         }
     }
@@ -19,8 +21,8 @@ function Rownavigatormenu({location: {pathname}, history}) {
 
         <div className="row">
             {
-                ["Back", mapUrlwithcontrols(pathname)].
-                    map(e => <span className="corebox_x5 center btn_u">{e}</span>)
+                [(historylength > 2 ? <span onClick={() => handleClick('Back')} className="corebox_x5 center btn_u">Back</span> : ""),
+                [mapUrlwithcontrols(pathname)].map(e => <span onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)]
             }
         </div>
         <div className="row">
