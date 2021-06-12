@@ -9,6 +9,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
             case ("Settings"): history.push('/profile/settings'); break;
             case ("Library"): history.push('/profile/library'); break;
             case ("Save"): history.push('/profile/library'); break;
+            case ("Sign"): history.push('/sign'); break;
             case ("Back"): history.goBack(); break;
             default: history.push('/'); break;
         }
@@ -27,7 +28,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
         </div>
         <div className="row">
             {
-                ["Home", "Assistant"].
+                ["Home", "Assistant","Sign"].
                     map(e => <span onClick={() => handleClick(e)} className="corebox_x6 center btn_u tcenter">{e}</span>)
             }
             <Cellprofilepicture size={30} />

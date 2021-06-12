@@ -11,19 +11,19 @@ import Rowcommentinput from "./Rowcommentinput";
 
 function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, strInstructions, strMeal, strMealThumb, strTags, strYoutube } }, u_appstate }) {
 
-    debugger;
+
     let [[loaded, setLoaded], { id }, history] = [useState(false), useParams(), useHistory()];
 
     useEffect(() => {
         if (loaded == false) {
-            debugger;
+
             handleLoad();
             setLoaded(true)
         }
     }, [loaded, setLoaded])
 
     const handleFetch = ({ meals: { 0: response } }) => {
-        debugger;
+
         u_appstate("focusedmealdetails", response)
     }
 

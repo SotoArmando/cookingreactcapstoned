@@ -17,13 +17,13 @@ import Portraitprofilesettings from './components/Portraitprofilesettings';
 import Portraitprofilelibrary from './components/Portraitprofilelibrary';
 import Portraitassistant from './components/Portraitassistant';
 import Portraitassistantrecipe from './components/Portraitassistantrecipe';
+import Portraitsign from './components/Portraitsign';
 
 
 function Homepath({ u_appstate }) {
   let [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
   
   let handleLoadFetch = ({ 0: { meals }, 1: { categories }, 2: { focusedmealdetails: mealslatest } }) => {
-    debugger;
     u_appstate("categories", categories)
     setData({ ...data, meals, categories, mealslatest })
   }
@@ -76,6 +76,7 @@ function App() {
     "/profile/:id": Portraitprofile,
     "/assistant/recipe/:id": Portraitassistantrecipe,
     "/assistant": Portraitassistant,
+    "/sign": Portraitsign,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
 

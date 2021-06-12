@@ -11,7 +11,7 @@ function Cellmeal({ strMeal, strMealThumb, idMeal, cellBoundings, handleClick: h
         history.push('/recipe/' + idMeal)
     }
 
-    debugger;
+
 
     return <div className="btn_u" onClick={handleclick || handleClick}>
         {strMeal}
