@@ -40,7 +40,7 @@ function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, 
         {
             [strMeal, strArea, strCategory, strInstructions, strMealThumb, strTags, strYoutube].map(e => <span>{e}</span>)
         }
-        <Wrappedrowlist list={"0".repeat(10).split("")} item={Celltimer} basis={40} />
+        <Wrappedrowlist list={"0".repeat(3).split("")} item={Celltimer} basis={40} />
 
 
         <Rowcomment />

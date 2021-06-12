@@ -14,7 +14,7 @@ import Portraitmeals from './components/Portraitmeals';
 import Portraitprofile from './components/Portraitprofile';
 import Rownavigatormenu from './components/Rownavigatormenu';
 import Portraitprofilesettings from './components/Portraitprofilesettings';
-import Portraitprofilelibrary from './components/Portraitprofilesettings';
+import Portraitprofilelibrary from './components/Portraitprofilelibrary';
 import Portraitassistant from './components/Portraitassistant';
 import Portraitassistantrecipe from './components/Portraitassistantrecipe';
 
@@ -59,8 +59,6 @@ function Homepath({ u_appstate }) {
     <Wrappedrowlist list={meals} item={Cellmeal} />
     <span>Latest</span>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} />
-
-    
   </div>
 }
 
@@ -73,13 +71,21 @@ function Portraitmealpath() {
 function App() {
   let paths = {
     "/recipe/:id": Portraitmeals,
-    "/profile/:id": Portraitprofile,
-    "/profile/settings": Portraitprofilesettings,
     "/profile/library": Portraitprofilelibrary,
+    "/profile/settings": Portraitprofilesettings,
+    "/profile/:id": Portraitprofile,
     "/assistant/recipe/:id": Portraitassistantrecipe,
     "/assistant": Portraitassistant,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
+
+  // done
+  // library x profile
+  // settings x profile
+  // content x profile, profile
+  // timers x recipe, recipes x library x profile, grocerylists x profile, timers x profile
+
+
   return (
     <div className="App">
       <Rownavigatormenu />

@@ -1,34 +1,40 @@
 import Cellprofilepicture from "./Cellprofilepicture";
-import { useHistory } from "react-router";
+import { withRouter } from "react-router";
 
-function Rownavigatormenu() {
-    let [history] = [useHistory()]
+function Rownavigatormenu({location: {pathname}, history}) {
+
     const handleClick = (string) => {
         switch (string) {
             case ("Assistant"): history.push('/assistant'); break;
+            case ("Settings"): history.push('/profile/settings'); break;
+            case ("Library"): history.push('/profile/library'); break;
             default: history.push('/'); break;
         }
+    }
+
+    const mapUrlwithcontrols = (string) => {
+        return ['Save'][['/recipe/'].findIndex(e => string.match(e))];
     }
     return [<div className="corebox_3 nav row space_between items_center back_0">
 
         <div className="row">
             {
-                ["Back", "Save"].
+                ["Back", mapUrlwithcontrols(pathname)].
                     map(e => <span className="corebox_x5 center btn_u">{e}</span>)
             }
         </div>
         <div className="row">
             {
-                ["Assistant", "Option", "Option", "Option"].
-                    map(e => <span onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)
+                ["Home", "Assistant"].
+                    map(e => <span onClick={() => handleClick(e)} className="corebox_x6 center btn_u tcenter">{e}</span>)
             }
             <Cellprofilepicture size={30} />
             <span className="corebox_x5 corebox_3 center  btn_u hover relative">
                 Profile
-                <div className="to_hover absolute corebox_12 corebox_x7 back_0 col right marcore_t26">
+                <div className="to_hover absolute  corebox_x7  col right marcore_t26">
                     {
-                        ["Assistant", "Option", "Option", "Option"].
-                            map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u">{e}</span>)
+                        ["Settings", "Library"].
+                            map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u back_0">{e}</span>)
                     }
                 </div>
             </span>
@@ -40,4 +46,4 @@ function Rownavigatormenu() {
     ]
 }
 
-export default Rownavigatormenu;
+export default withRouter(Rownavigatormenu);

@@ -3,7 +3,7 @@ const mealdbkeys = {
     "Lookup full meal details by id": "https://themealdb.p.rapidapi.com/lookup.php?i=",
     "List all meal categories": "https://themealdb.p.rapidapi.com/list.php?c=list",
     "Filter by Category": "https://themealdb.p.rapidapi.com/filter.php?c=",
-    "Filter by Latest":"https://themealdb.p.rapidapi.com/latest.php",
+    "Filter by Latest": "https://themealdb.p.rapidapi.com/latest.php",
     keys: {
         "Search meal by name": "meals",
         "Lookup full meal details by id": "focusedmealdetails",
@@ -22,7 +22,19 @@ const Defaultstate = {
     meals: [],
     focusedmealdetails: {},
     categories: [],
-    mealslatest: []
+    mealslatest: [],
+    profile: {
+        settings: {
+            naming: "userx",
+            mail: "userx@dotmail.com",
+            darkmode: false,
+            entrydate: 0,
+            lastsession: 0,
+        },
+        content: [],
+        library: [],
+        timers: []
+    }
 }
 
 const Detectitems = (item) => {

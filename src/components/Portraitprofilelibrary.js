@@ -3,7 +3,6 @@ import Cellmeal from "./Cellmeal"
 export default function Portraitprofilesettings() {
     let backgroundurl = 'url(https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture-768x768.jpg)'
     return <div className="col">
-
         <span className="maskicon_circle iconsize_40 " style={{ background: backgroundurl }}></span>
         <span>@Yvanella</span>
         <span>Morning lover</span>
@@ -18,15 +17,6 @@ export default function Portraitprofilesettings() {
             <Cellmeal strMeal="Recipe 2" />
             <Cellmeal strMeal="Recipe 2" />
         </div>
-        <div className="row">
-            <span className="maskicon_circle iconsize_40 " style={{ background: backgroundurl }}></span>
-            <span className="maskicon_circle iconsize_40 " style={{ background: backgroundurl }}></span>
-            <span className="maskicon_circle iconsize_40 " style={{ background: backgroundurl }}></span>
-        </div>
-        <div className="row">
-            <Cellmeal strMeal="Recipe 0" />
-            <Cellmeal strMeal="Recipe 1" />
-            <Cellmeal strMeal="Recipe 2" />
-        </div>
+        <div className="corebox_15 back_4" />
     </div>
 }
