@@ -24,4 +24,26 @@ let newuser = Object.entries({
     }
 })
 
-export {newsession, newuser}
+let newrecipe;
+
+let newtimer;
+
+let newprofilesettings = {
+    "mail": {
+        holder: "Type an email",
+    },
+    "password": {
+        holder: "Type a Password",
+        type: "password",
+    },
+    "confirmpassword": {
+        holder: "Confirm Password",
+    },
+    "nick": {
+        holder: "Type a Nickname",
+    }
+};
+
+let post;
+
+export { newsession, newuser, newprofilesettings }

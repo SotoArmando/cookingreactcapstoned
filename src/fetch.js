@@ -4,6 +4,7 @@ const mealdbkeys = {
     "List all meal categories": "https://themealdb.p.rapidapi.com/list.php?c=list",
     "Filter by Category": "https://themealdb.p.rapidapi.com/filter.php?c=",
     "Filter by Latest": "https://themealdb.p.rapidapi.com/latest.php",
+    "unknownuser CRUD": "http://localhost:3000/unknownusers",
     keys: {
         "Search meal by name": "meals",
         "Lookup full meal details by id": "focusedmealdetails",
@@ -55,6 +56,7 @@ function fetcher(url, call) {
         headers: {
             "x-rapidapi-key": "352fae4cc4msh403045479e456c0p1c2ce7jsnc94ed5a5de5d",
             "x-rapidapi-host": "themealdb.p.rapidapi.com",
+
         },
     }
 
@@ -83,8 +85,18 @@ function fetcher(url, call) {
                     { [Detectitems(items[0])]: items }
                 )))).then(call)
             }
+        },
+        fetchcrudOperation: (operation = 'GET', body) => {
+            fetch(url, {
+                ...options, 
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }, 
+                method: operation, 
+                body: JSON.stringify(body)
+            }).then(resp => resp.json()).then(call)
         }
-
     }
 
     return d;

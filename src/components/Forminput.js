@@ -13,8 +13,14 @@ function Forminput({ entries, vmargin = 20, handleCapture, id }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        
+
         if (isValid()) {
             setStatus("state is valid " + JSON.stringify(state))
+            
+            delete state.confirmpassword;
+
             handleCapture(state)
         } else {
             setStatus("state is not valid " + JSON.stringify(state))
