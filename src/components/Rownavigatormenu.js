@@ -1,7 +1,9 @@
 import Cellprofilepicture from "./Cellprofilepicture";
 import { withRouter } from "react-router";
+import { createMapDispatchtoProps } from "../reducers/createDefaultreducer";
+import { connect } from "react-redux";
 
-function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength } }) {
+function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength }, session: { active } }) {
 
     const handleClick = (string) => {
         switch (string) {
@@ -26,15 +28,15 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
                 [mapUrlwithcontrols(pathname)].map(e => <span onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)]
             }
         </div>
-        <div className="row">
+        <div className="row pad_r24">
             {
-                ["Home", "Assistant","Sign"].
-                    map(e => <span onClick={() => handleClick(e)} className="corebox_x6 center btn_u tcenter">{e}</span>)
+                [["Home",4], ["Assistant",7], ["Sign",4]].filter((e,i) => [true, true, !active][i] ).
+                    map(([e,size]) => <span onClick={() => handleClick(e)} className={`corebox_x${size} center btn_u tcenter`}>{e}</span>)
             }
-            <Cellprofilepicture size={30} />
-            <span className="corebox_x5 corebox_3 center  btn_u hover relative">
-                Profile
-                <div className="to_hover absolute  corebox_x7  col right marcore_t26">
+            {active ? <Cellprofilepicture size={30} /> : []}
+            <span className="corebox_x6 corebox_3 center  btn_u hover relative">
+                {active ? 'Profile' : 'Session'}
+                <div className="to_hover absolute  corebox_x6  col right marcore_t26">
                     {
                         ["Settings", "Library"].
                             map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u back_0">{e}</span>)
@@ -49,4 +51,8 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
     ]
 }
 
-export default withRouter(Rownavigatormenu);
+
+let mapStatetoProps = ({ session }) => ({ session });
+let mapDispatchtoProps = createMapDispatchtoProps();
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(withRouter(Rownavigatormenu));

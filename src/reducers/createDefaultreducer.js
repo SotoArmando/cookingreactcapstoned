@@ -30,7 +30,7 @@ function createDefaultreducer(name) {
 
 function createMapDispatchtoProps() {
   return function x(dispatch) {
-    return [{}, 'appstate'].reduce((total, e) => {
+    return [{}, 'session','appstate'].reduce((total, e) => {
       const b = `u_${e}`;
       const c = `d_${e}`;
 

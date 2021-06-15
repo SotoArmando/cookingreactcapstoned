@@ -5,6 +5,8 @@ const mealdbkeys = {
     "Filter by Category": "https://themealdb.p.rapidapi.com/filter.php?c=",
     "Filter by Latest": "https://themealdb.p.rapidapi.com/latest.php",
     "unknownuser CRUD": "http://localhost:3000/unknownusers",
+    "user CRUD": "http://localhost:3000/users",
+    userExist: ({ mail, password }) => `?filter=%7B%0A%20%20%22offset%22%3A%200%2C%0A%20%20%22limit%22%3A%201%2C%0A%20%20%22skip%22%3A%200%2C%0A%20%20%22order%22%3A%20%22string%22%2C%0A%20%20%22where%22%3A%20%7B%0A%20%20%20%20%22mail%22%3A%20%22${mail}%22%2C%0A%20%20%20%20%22password%22%3A%20%22${password}%22%0A%20%20%7D%2C%0A%20%20%22fields%22%3A%20%7B%0A%20%20%20%20%22id%22%3A%20true%2C%0A%20%20%20%20%22mail%22%3A%20true%2C%0A%20%20%20%20%22nick%22%3A%20true%2C%0A%20%20%20%20%22password%22%3A%20true%0A%20%20%7D%0A%7D`,
     keys: {
         "Search meal by name": "meals",
         "Lookup full meal details by id": "focusedmealdetails",
@@ -24,18 +26,10 @@ const Defaultstate = {
     focusedmealdetails: {},
     categories: [],
     mealslatest: [],
-    profile: {
-        settings: {
-            naming: "userx",
-            mail: "userx@dotmail.com",
-            darkmode: false,
-            entrydate: 0,
-            lastsession: 0,
-        },
-        content: [],
-        library: [],
-        timers: []
-    }
+    session: {
+        active: false,
+        activesession: {}
+    },
 }
 
 const Detectitems = (item) => {
@@ -87,14 +81,16 @@ function fetcher(url, call) {
             }
         },
         fetchcrudOperation: (operation = 'GET', body) => {
-            fetch(url, {
-                ...options, 
+            let fetchurl = url + ((operation === 'GET') ? body : '')
+            debugger;
+            fetch(fetchurl, {
+                ...options,
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                }, 
-                method: operation, 
-                body: JSON.stringify(body)
+                },
+                method: operation,
+                body: operation === 'GET' ? undefined : JSON.stringify(body)
             }).then(resp => resp.json()).then(call)
         }
     }

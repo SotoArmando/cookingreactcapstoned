@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { fetcher, mealdbkeys } from '../fetch';
 import { newsession, newuser } from '../formsetup';
 import Forminput from './Forminput';
+import { createMapDispatchtoProps } from '../reducers/createDefaultreducer'
+import { connect } from 'react-redux';
+function Portraitsign({ u_session, session: { activesession } }) {
 
-function Portraitsign({ }) {
-
-    let [boolsignup, setboolsignup] = useState(false);
+    let [[boolsignup, setboolsignup], [session, setSession]] = [useState(false), useState(activesession)];
 
     const handleUserSignup = (unknownuser) => {
         if (boolsignup) {
@@ -16,9 +17,16 @@ function Portraitsign({ }) {
     }
     const handleUserSignin = (user) => {
         if (boolsignup === false) {
-            let { ["unknownuser CRUD"]: url } = mealdbkeys;
-            let { fetchcrudOperation } = fetcher(url, (e => console.log(e)));
-            fetchcrudOperation("GET", user)
+            let { ["unknownuser CRUD"]: url, userExist } = mealdbkeys;
+            let { fetchcrudOperation } = fetcher(url, (e => {
+                if (e.length > 0) {
+                    setSession(e[0]);
+                    u_session('active', true)
+                    u_session('activesession', e[0])
+                }
+            }
+            ));
+            fetchcrudOperation("GET", userExist(user))
         }
     }
 
@@ -33,6 +41,9 @@ function Portraitsign({ }) {
             <span className='f_4'>Welcome to dothiscooking</span>
             <span>Happy to have you here :)</span>
             <div className='corebox_0' />
+            <div>
+                {JSON.stringify(session)}
+            </div>
             <Forminput
                 id="Signform"
                 entries={boolsignup ? newuser : newsession}
@@ -43,4 +54,6 @@ function Portraitsign({ }) {
     </div>
 }
 
-export default Portraitsign;
+let mapStatetoProps = ({session}) => ({session});
+let mapDispatchtoProps = createMapDispatchtoProps()
+export default connect(mapStatetoProps, mapDispatchtoProps)(Portraitsign);
