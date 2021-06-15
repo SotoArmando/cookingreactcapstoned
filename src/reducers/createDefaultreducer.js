@@ -12,6 +12,7 @@ function createDefaultreducer(name) {
       case (`d_${name}`):
         return { ...state, [k]: undefined };
       case ('persist/REHYDRATE'): {
+        debugger;
         const {
           payload: { [name]: rehydrate, [name]: { LoadedAt } } =
           { [name]: { LoadedAt: new Date().toISOString() }, [name]: {} },

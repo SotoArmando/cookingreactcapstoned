@@ -21,9 +21,10 @@ import Portraitsign from './components/Portraitsign';
 
 
 function Homepath({ u_appstate }) {
-  let [[loaded, setLoaded], [data, setData]] = [useState(false), useState(Defaultstate)];
+  let [[loaded, setLoaded], [data, setData]] = [useState(false), useState({})];
   
   let handleLoadFetch = ({ 0: { meals }, 1: { categories }, 2: { focusedmealdetails: mealslatest } }) => {
+    debugger;
     u_appstate("categories", categories)
     setData({ ...data, meals, categories, mealslatest })
   }
@@ -45,20 +46,23 @@ function Homepath({ u_appstate }) {
   }
 
   useEffect(() => {
+    debugger;
     if (!loaded) {
       const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory, ["Filter by Latest"]: urlmealslatest } = mealdbkeys
-      fetcher([urlfiltercategory + "Seafood", urllistcategory, urlmealslatest], handleLoadFetch).fetchandwaitAll(); setLoaded(true)
+      fetcher([urlfiltercategory + "Seafood", urllistcategory, urlmealslatest], handleLoadFetch).fetchandwaitAll();
+      setLoaded(true); 
     }
   })
 
   const { categories, meals, mealslatest } = data;
-
+  debugger;
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
-    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
-    <Wrappedrowlist list={meals} item={Cellmeal} />
-    <span>Latest</span>
-    <Wrappedrowlist list={mealslatest} item={Cellmeal} />
+    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate}/>
+    <span className="row items_center corebox_3 f600">Meals</span>
+    <Wrappedrowlist list={meals} item={Cellmeal} basis={40} marginv={23} marginh={23}  />
+    <span className="row items_center corebox_3 f600">Latest Meals</span>
+    <Wrappedrowlist list={mealslatest} item={Cellmeal} basis={40} marginv={23} marginh={23} />
   </div>
 }
 

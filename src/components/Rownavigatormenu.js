@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { createMapDispatchtoProps } from "../reducers/createDefaultreducer";
 import { connect } from "react-redux";
 
-function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength }, session: { active }, u_session }) {
+function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength }, session: { active, activesession: { nick } }, u_session }) {
 
     const handleSignout = () => u_session('active', false)
     const handleClick = (string) => {
@@ -37,7 +37,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
             }
             {active ? <Cellprofilepicture size={30} /> : []}
             <span className="corebox_x6 corebox_3 center  btn_u hover relative">
-                {active ? 'Profile' : 'Session'}
+                {active ? nick : 'Session'}
                 <div className="to_hover absolute  corebox_x6  col right marcore_t26">
                     {
                         ["Settings", "Library", "Sign out"].

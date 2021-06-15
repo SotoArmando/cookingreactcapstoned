@@ -4,9 +4,9 @@ import { newsession, newuser } from '../formsetup';
 import Forminput from './Forminput';
 import { createMapDispatchtoProps } from '../reducers/createDefaultreducer'
 import { connect } from 'react-redux';
-function Portraitsign({ u_session, session: { activesession } }) {
+function Portraitsign({ u_session, session }) {
 
-    let [[boolsignup, setboolsignup], [session, setSession]] = [useState(false), useState(activesession)];
+    let [[boolsignup, setboolsignup], { active }] = [useState(false), session];
 
     const handleUserSignup = (unknownuser) => {
         if (boolsignup) {
@@ -20,7 +20,6 @@ function Portraitsign({ u_session, session: { activesession } }) {
             let { ["unknownuser CRUD"]: url, userExist } = mealdbkeys;
             let { fetchcrudOperation } = fetcher(url, (e => {
                 if (e.length > 0) {
-                    setSession(e[0]);
                     u_session('active', true)
                     u_session('activesession', e[0])
                 }
@@ -54,6 +53,6 @@ function Portraitsign({ u_session, session: { activesession } }) {
     </div>
 }
 
-let mapStatetoProps = ({session}) => ({session});
+let mapStatetoProps = ({ session }) => ({ session });
 let mapDispatchtoProps = createMapDispatchtoProps()
 export default connect(mapStatetoProps, mapDispatchtoProps)(Portraitsign);

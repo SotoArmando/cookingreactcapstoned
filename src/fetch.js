@@ -22,13 +22,19 @@ const mealdbkeys = {
 }
 
 const Defaultstate = {
-    meals: [],
-    focusedmealdetails: {},
-    categories: [],
-    mealslatest: [],
+    appstate: {
+        meals: [],
+        focusedmealdetails: {},
+        categories: [],
+        mealslatest: [],
+    },
     session: {
         active: false,
-        activesession: {}
+        activesession: {
+            nick: undefined,
+            mail: undefined,
+            password: undefined,
+        }
     },
 }
 
