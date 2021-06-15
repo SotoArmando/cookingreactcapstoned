@@ -18,11 +18,12 @@ import Portraitprofilelibrary from './components/Portraitprofilelibrary';
 import Portraitassistant from './components/Portraitassistant';
 import Portraitassistantrecipe from './components/Portraitassistantrecipe';
 import Portraitsign from './components/Portraitsign';
+import Portraituseractivation from './components/Portraituseractivation';
 
 
 function Homepath({ u_appstate }) {
   let [[loaded, setLoaded], [data, setData]] = [useState(false), useState({})];
-  
+
   let handleLoadFetch = ({ 0: { meals }, 1: { categories }, 2: { focusedmealdetails: mealslatest } }) => {
     debugger;
     u_appstate("categories", categories)
@@ -50,17 +51,36 @@ function Homepath({ u_appstate }) {
     if (!loaded) {
       const { ["Filter by Category"]: urlfiltercategory, ["List all meal categories"]: urllistcategory, ["Filter by Latest"]: urlmealslatest } = mealdbkeys
       fetcher([urlfiltercategory + "Seafood", urllistcategory, urlmealslatest], handleLoadFetch).fetchandwaitAll();
-      setLoaded(true); 
+      setLoaded(true);
     }
+
+    debugger;
+
+
+
+    // const mailgun = require("mailgun-js");
+    // const DOMAIN = 'sotoarmando.com';
+    // let api_key = '403e833f3246653d52e10efefd900779-24e2ac64-e84f3ca9'
+    // const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
+    // const data = {
+    //   from: 'Excited User <armandosoto@sotoarmando.com>',
+    //   to: 'armando29@live.com, armandosoto@sotoarmando.com',
+    //   subject: 'Hello',
+    //   text: 'Testing some Mailgun awesomness!'
+    // };
+    // mg.messages().send(data, function (error, body) {
+    //   debugger;
+    //   console.log(body);
+    // });
   })
 
   const { categories, meals, mealslatest } = data;
   debugger;
   return <div>
     <Rowsearch handleSubmit={handleSearch} />
-    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate}/>
+    <Wrappedrowlist list={categories} item={Cellcategory} handleClick={handleCategoryFilterUpdate} />
     <span className="row items_center corebox_3 f600">Meals</span>
-    <Wrappedrowlist list={meals} item={Cellmeal} basis={40} marginv={23} marginh={23}  />
+    <Wrappedrowlist list={meals} item={Cellmeal} basis={40} marginv={23} marginh={23} />
     <span className="row items_center corebox_3 f600">Latest Meals</span>
     <Wrappedrowlist list={mealslatest} item={Cellmeal} basis={40} marginv={23} marginh={23} />
   </div>
@@ -80,6 +100,7 @@ function App() {
     "/profile/:id": Portraitprofile,
     "/assistant/recipe/:id": Portraitassistantrecipe,
     "/assistant": Portraitassistant,
+    "/activateuser/:hash": Portraituseractivation,
     "/sign": Portraitsign,
     "/": connect(() => ({}), createMapDispatchtoProps())(Homepath)
   }
@@ -101,4 +122,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

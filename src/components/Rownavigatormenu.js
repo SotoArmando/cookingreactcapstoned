@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { createMapDispatchtoProps } from "../reducers/createDefaultreducer";
 import { connect } from "react-redux";
 
-function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength }, session: { active, activesession: { nick } }, u_session }) {
+function Rownavigatormenu({ location: { pathname }, history, history: { length: historylength }, session: { active, activesession: { nick, valid } }, u_session }) {
 
     const handleSignout = () => u_session('active', false)
     const handleClick = (string) => {
@@ -32,7 +32,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
         </div>
         <div className="row pad_r24">
             {
-                [["Home", 4], ["Assistant", 7], ["Sign", 4]].filter((e, i) => [true, true, !active][i]).
+                [["Activate", 6], ["Home", 4], ["Assistant", 7], ["Sign", 4]].filter((e, i) => [(!valid && active), true, true, !active][i]).
                     map(([e, size]) => <span onClick={() => handleClick(e)} className={`corebox_x${size} center btn_u tcenter`}>{e}</span>)
             }
             {active ? <Cellprofilepicture size={30} /> : []}
@@ -40,7 +40,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
                 {active ? nick : 'Session'}
                 <div className="to_hover absolute  corebox_x6  col right marcore_t26">
                     {
-                        ["Settings", "Library", "Sign out"].
+                        ["Settings", "Library", "Sign out"].filter((e, i) => [true, true, active][i]).
                             map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u back_0">{e}</span>)
                     }
                 </div>

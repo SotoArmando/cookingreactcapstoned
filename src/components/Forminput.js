@@ -13,7 +13,7 @@ function Forminput({ entries, vmargin = 20, handleCapture, id }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        debugger;
         if (isValid()) {
             setStatus("state is valid " + JSON.stringify(state))
 

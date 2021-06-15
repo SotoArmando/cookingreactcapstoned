@@ -31,6 +31,7 @@ const Defaultstate = {
     session: {
         active: false,
         activesession: {
+            valid: false,
             nick: undefined,
             mail: undefined,
             password: undefined,

@@ -17,15 +17,21 @@ function Portraitsign({ u_session, session }) {
     }
     const handleUserSignin = (user) => {
         if (boolsignup === false) {
-            let { ["unknownuser CRUD"]: url, userExist } = mealdbkeys;
-            let { fetchcrudOperation } = fetcher(url, (e => {
+            let { ["unknownuser CRUD"]: url, ["user CRUD"]: url1, userExist } = mealdbkeys;
+            const handleResponse = ((e, valid = false) => {
                 if (e.length > 0) {
                     u_session('active', true)
-                    u_session('activesession', e[0])
+                    if (valid) {
+                        u_session('activesession', { ...e[0], valid })
+                    } else if(session.activesession.valid === false) {
+                        u_session('activesession', { ...e[0], valid })
+                    }
                 }
-            }
-            ));
-            fetchcrudOperation("GET", userExist(user))
+            })
+
+            let [{ fetchcrudOperation: fetchunknwonuser }, { fetchcrudOperation: fetchuser }] = [fetcher(url, handleResponse), fetcher(url1, (e) => handleResponse(e, true))];
+            fetchunknwonuser("GET", userExist(user))
+            fetchuser("GET", userExist(user))
         }
     }
 
