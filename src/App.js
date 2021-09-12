@@ -95,7 +95,7 @@ function App() {
     <div className="App">
       <Rownavigatormenu />
       <Switch >
-        {Object.entries(paths).map(({ 0: route, 1: View }) => <Route path={route} ><View /></Route>)}
+        {Object.entries(paths).map(({ 0: route, 1: View }) => <Route key={route} path={route} ><View /></Route>)}
       </Switch>
     </div>
   );

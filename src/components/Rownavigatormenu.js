@@ -22,32 +22,27 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
     const mapUrlwithcontrols = (string) => {
         return ['Save'][['/recipe/'].findIndex(e => string.match(e))];
     }
-    return [<div className="corebox_3 nav row space_between items_center back_0">
+    return [<div key='Rownavigatormenu' className="corebox_3 nav row space_between items_center back_0">
 
         <div className="row">
             {
-                [(historylength > 2 ? <span onClick={() => handleClick('Back')} className="corebox_x5 center btn_u">Back</span> : ""),
-                [mapUrlwithcontrols(pathname)].map(e => <span onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)]
+                [
+                    (historylength > 2 ? <span key="Rownavigatormenuback" onClick={() => handleClick('Back')} className="corebox_x5 center btn_u">
+                    Back
+                    </span> : []),
+                    ...[mapUrlwithcontrols(pathname)].map(e => <span  key={'mapUrlwithcontrols'+e} onClick={() => handleClick(e)} className="corebox_x5 center btn_u">{e}</span>)]
             }
         </div>
         <div className="row pad_r24">
             {
-                [["Home", 4], ["Assistant", 7], ["Sign", 4]].filter((e, i) => [true, true, !active][i]).
-                    map(([e, size]) => <span onClick={() => handleClick(e)} className={`corebox_x${size} center btn_u tcenter`}>{e}</span>)
+                [["Home", 4]].filter((e, i) => [true, true, !active][i]).map(
+                    ([e, size]) => <span key={"Rownavigatormenu"+e+size} onClick={() => handleClick(e)} className={`corebox_x${size} center btn_u tcenter`}>{e}</span>)
             }
-            {active ? <Cellprofilepicture size={30} /> : []}
-            <span className="corebox_x6 corebox_3 center  btn_u hover relative">
-                {active ? nick : 'Session'}
-                <div className="to_hover absolute  corebox_x6  col right marcore_t26">
-                    {
-                        ["Settings", "Library", "Sign out"].
-                            map(e => <span onClick={() => handleClick(e)} className="corebox_3 corebox_x5 center btn_u back_0">{e}</span>)
-                    }
-                </div>
-            </span>
+            
+           
         </div>
     </div>,
-    <div className="corebox_3" />
+    <div key='Rownavigatormenucorebox_3' className="corebox_3" />
 
 
     ]

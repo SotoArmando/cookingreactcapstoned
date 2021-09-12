@@ -54,7 +54,7 @@ function fetcher(url, call) {
     const options = {
         method: "GET",
         headers: {
-            "x-rapidapi-key": "352fae4cc4msh403045479e456c0p1c2ce7jsnc94ed5a5de5d",
+            "x-rapidapi-key": "b7f80d2847msha3e556539a614c3p12cb51jsn29380fd29fa8",
             "x-rapidapi-host": "themealdb.p.rapidapi.com",
 
         },

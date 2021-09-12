@@ -35,18 +35,23 @@ function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, 
     const handleAuthorClick = () => {
         history.push('/profile/' + 1)
     }
-    return <div className="col">
-        <div className="btn_u " onClick={handleAuthorClick}>Author: XMan</div>
+    return <div className="col pad_22">
+        <div className="corebox_14 "
+            style={{
+            backgroundImage: `url(${strMealThumb})`,
+            backgroundSize: 'cover'
+        }}>
+        </div>
+        <span className="f_1 corebox_3 row items_center">{strMeal}</span>
         {
-            [strMeal, strArea, strCategory, strInstructions, strMealThumb, strTags, strYoutube].map(e => <span>{e}</span>)
+            [ strArea, strCategory, , strMealThumb, strTags, strYoutube].map(e => <span>{e}</span>)
         }
-        <Wrappedrowlist list={"0".repeat(3).split("")} item={Celltimer} basis={40} />
+        <span className="pad_t22">
+        {strInstructions}
+        </span>
+ 
 
 
-        <Rowcomment />
-        <Rowcomment />
-        <Rowcomment />
-        <Rowcommentinput/>
     </div>
 }
 
