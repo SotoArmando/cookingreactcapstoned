@@ -12,7 +12,6 @@ function createDefaultreducer(name) {
       case (`d_${name}`):
         return { ...state, [k]: undefined };
       case ('persist/REHYDRATE'): {
-        debugger;
         const {
           payload: { [name]: rehydrate, [name]: { LoadedAt } } =
           { [name]: { LoadedAt: new Date().toISOString() }, [name]: {} },
@@ -31,7 +30,7 @@ function createDefaultreducer(name) {
 
 function createMapDispatchtoProps() {
   return function x(dispatch) {
-    return [{}, 'session','appstate'].reduce((total, e) => {
+    return [{}, 'session', 'appstate'].reduce((total, e) => {
       const b = `u_${e}`;
       const c = `d_${e}`;
 

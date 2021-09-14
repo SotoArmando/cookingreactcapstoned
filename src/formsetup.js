@@ -1,49 +1,43 @@
-let newsession = Object.entries({
-    "mail": {
-        holder: "Type an email",
-    },
-    "password": {
-        holder: "Type a Password",
-        type: "password",
-    }
-})
+const newsession = Object.entries({
+  mail: {
+    holder: 'Type an email',
+  },
+  password: {
+    holder: 'Type a Password',
+    type: 'password',
+  },
+});
 
-let newuser = Object.entries({
-    "mail": {
-        holder: "Type an email",
-    },
-    "password": {
-        holder: "Type a Password",
-        type: "password",
-    },
-    "confirmpassword": {
-        holder: "Confirm Password",
-    },
-    "nick": {
-        holder: "Type a Nickname",
-    }
-})
+const newuser = Object.entries({
+  mail: {
+    holder: 'Type an email',
+  },
+  password: {
+    holder: 'Type a Password',
+    type: 'password',
+  },
+  confirmpassword: {
+    holder: 'Confirm Password',
+  },
+  nick: {
+    holder: 'Type a Nickname',
+  },
+});
 
-let newrecipe;
-
-let newtimer;
-
-let newprofilesettings = {
-    "mail": {
-        holder: "Type an email",
-    },
-    "password": {
-        holder: "Type a Password",
-        type: "password",
-    },
-    "confirmpassword": {
-        holder: "Confirm Password",
-    },
-    "nick": {
-        holder: "Type a Nickname",
-    }
+const newprofilesettings = {
+  mail: {
+    holder: 'Type an email',
+  },
+  password: {
+    holder: 'Type a Password',
+    type: 'password',
+  },
+  confirmpassword: {
+    holder: 'Confirm Password',
+  },
+  nick: {
+    holder: 'Type a Nickname',
+  },
 };
 
-let post;
-
-export { newsession, newuser, newprofilesettings }
+export { newsession, newuser, newprofilesettings };
