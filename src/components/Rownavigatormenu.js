@@ -22,7 +22,7 @@ function Rownavigatormenu({ location: { pathname }, history, history: { length: 
     const mapUrlwithcontrols = (string) => {
         return ['Save'][['/recipe/'].findIndex(e => string.match(e))];
     }
-    return [<div key='Rownavigatormenu' className="corebox_3 nav row space_between items_center back_0">
+    return [<div key='Rownavigatormenu' className="corebox_3 nav row space_between items_center back_s1">
 
         <div className="row">
             {

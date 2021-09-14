@@ -57,10 +57,10 @@ function Portraitmeal({
 
         <div className="row basis_42 grow pad_t27 pad_b27">
           <div className="col">
-            {ingredients.map(([k, v]) => <span key={k} className="row items_center corebox_0">{v}</span>)}
+            {ingredients.map(([k, v]) => <span key={"ingredients"+k} className="row items_center corebox_0">{v}</span>)}
           </div>
           <div className="col">
-            {measures.map(([k, v]) => <span key={k} className="row items_center corebox_0">{v}</span>)}
+            {measures.map(([k, v]) => <span key={"measures"+k} className="row items_center corebox_0">{v}</span>)}
           </div>
 
         </div>

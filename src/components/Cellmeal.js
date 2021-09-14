@@ -30,7 +30,7 @@ function Cellmeal({ strMeal, strMealThumb, idMeal, cellBoundings, handleClick: h
 
 
     return <div  className={`col space_between mar_l${marginh} mar_r${marginh} mar_t${marginh} mar_b${marginh} corebox_10 back_3 pad_22`} >
-        <div className="btn_u" onClick={() => (handleclick || handleClick)()}>{strMeal}</div>
+        <div className="btn_u" onClick={() => (handleClick)()}>{strMeal}</div>
         <div className="row">
             {[liked ? 'Liked' : 'Like', marked ? 'Marked' : 'Mark'].map((e,i) => <span key={'cellmealchecks'+i} onClick={() => handleClick(e)} className={`btn_u corebox_x5 ${[liked,marked][i]?'f600':''}`}>{e}</span>)}
         </div>

@@ -44,7 +44,7 @@ function Portraitmeal({ appstate: { focusedmealdetails: { strArea, strCategory, 
         </div>
         <span className="f_1 corebox_3 row items_center">{strMeal}</span>
         {
-            [ strArea, strCategory, , strMealThumb, strTags, strYoutube].map(e => <span>{e}</span>)
+            [ strArea, strCategory, , strMealThumb, strTags, strYoutube].map((e,i) => <span key={e+i}>{e}</span>)
         }
         <span className="pad_t22">
         {strInstructions}
