@@ -1,4 +1,4 @@
-# Project Name
+# React&Redux Capstone Project
 
 This project is about cooking and its up to allow users to keep updated with specific dates and meals, and also having a fair amount of utilities that 
 allows cooking for simpler.
