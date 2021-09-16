@@ -1,10 +1,19 @@
 # Project Name
 
-> One paragraph statement about the project.
+This project is about cooking and its up to allow users to keep updated with specific dates and meals, and also having a fair amount of utilities that 
+allows cooking for simpler.
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+- Features
+- Read & Consult Recipes
+- Consult & References Categories
+
+[TODO]
+- Alarms
+- Grocery Lists
+- Recipe Step Assistant
+- User Scope Sessions to persist on changes and updates
 
 ## Built With
 
