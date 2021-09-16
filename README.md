@@ -20,7 +20,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://mealsdbcapstoned.herokuapp.com/)
+[Live Demo Link](https://dothiscookingsite.herokuapp.com/)
 
 To get a local copy up and running follow these simple example steps.
 
