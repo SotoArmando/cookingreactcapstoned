@@ -39,6 +39,12 @@ export default function Homepath({ u_appstate: Uappstate }) {
     }).fetch();
   };
 
+  const handleKeyDown = ({ code, target: { value: textsearch } }) => {
+    if (code === 'Enter') {
+      handleSearch(textsearch);
+    }
+  };
+
   useEffect(() => {
     if (!loaded) {
       const { 'Filter by Category': urlfiltercategory, 'List all meal categories': urllistcategory, 'Filter by Latest': urlmealslatest } = mealdbkeys;
@@ -50,7 +56,7 @@ export default function Homepath({ u_appstate: Uappstate }) {
   const { categories, meals, mealslatest } = data;
   return (
     <div>
-      <Rowsearch handleSubmit={handleSearch} />
+      <Rowsearch handleChange={handleKeyDown} />
       <Wrappedrowlist
         list={categories}
         item={Cellcategory}

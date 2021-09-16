@@ -1,4 +1,3 @@
-/* eslint-disable function-paren-newline */
 const mealdbkeys = {
   'Search meal by name': 'https://themealdb.p.rapidapi.com/search.php?s=',
   'Lookup full meal details by id': 'https://themealdb.p.rapidapi.com/lookup.php?i=',
