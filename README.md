@@ -17,9 +17,9 @@ allows cooking for simpler.
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- Javascript ES6,
+- JSX,
+- React & Redux
 
 ## Live Demo
 
