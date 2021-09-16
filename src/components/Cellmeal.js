@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Cellmeal({
-  strMeal, strMealThumb, idMeal, marginh, marginv, key,
+  strMeal, strMealThumb, idMeal, marginh, marginv,
 }) {
   const [history] = [useHistory()];
   const handleClick = () => {
@@ -15,7 +15,7 @@ function Cellmeal({
     }
   };
   return (
-    <div key={key} role="button" tabIndex={0} data-testid="Cellmeal" className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick} onKeyDown={handleKeyDown}>
+    <div key={strMeal} role="button" tabIndex={0} data-testid="Cellmeal" className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick} onKeyDown={handleKeyDown}>
       <div className="allsize back_0 col">
         <div className="corebox_12 cover" style={{ backgroundImage: `url(${strMealThumb})`, backgroundSize: 'cover' }} />
         <div className="col pad_24">
@@ -31,7 +31,7 @@ Cellmeal.propTypes = {
   idMeal: PropTypes.string.isRequired,
   marginh: PropTypes.number.isRequired,
   marginv: PropTypes.number.isRequired,
-  key: PropTypes.string.isRequired,
+
 };
 
 export default Cellmeal;

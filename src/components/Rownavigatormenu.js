@@ -71,9 +71,7 @@ function Rownavigatormenu({
   ];
 }
 Rownavigatormenu.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }).isRequired,
+
   history: PropTypes.shape({
     length: PropTypes.number,
     push: PropTypes.func,

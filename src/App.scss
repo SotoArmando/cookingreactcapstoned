@@ -387,8 +387,6 @@
   }
 
   html {
-    // background: url(../res/patterns/pattern0.jpg);
-    //   background: linear-gradient(0,#eafafa,rgb(252.45,252.45,252.45)) ;
     overflow-x: hidden;
   }
 
@@ -553,7 +551,7 @@
     ("14", rgb(191.25, 191.25, 191.25)), ("15", rgb(191.25, 191.25, 191.25)),
     ("16", rgb(76.5, 76.5, 76.5)), ("17", rgb(102, 102, 102)), ("18", white),
     ("19", #0bbdad), ("20", rgb(83, 238, 191)), ("21", #969696);
-  $jpg-pic: ("pic0", url("./res/jpg/pic_1.jpg")), ("", url());
+  $jpg-pic: ("pic0", url("./res/jpg/pic_1.jpg")), ("", "");
 
   &.hover {
     position: relative;
