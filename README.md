@@ -34,33 +34,24 @@ allows cooking for simpler.
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-### Setup
-
-### Install
-
 ### Usage
-
+  git clone https://github.com/SotoArmando/cookingreactcapstoned
+  git checkout feature_dothiscookingsite
+  npm install
+  npm run
 ### Run tests
-
-### Deployment
-
+  git clone https://github.com/SotoArmando/cookingreactcapstoned
+  git checkout feature_dothiscookingsite
+  npm install
+  npm test
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Sotoarmando**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@githubhandle](https://github.com/SotoArmando)
 
-👤 **Author2**
-
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
 
 ## 🤝 Contributing
 
