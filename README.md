@@ -34,7 +34,7 @@ allows cooking for simpler.
 
 ## Live Demo
 
-[Live Demo Link](https://mealsdbcapstoned.herokuapp.com/)
+[Live Demo Link](https://dothiscookingsite.herokuapp.com/)
 
 
 ## Getting Started
