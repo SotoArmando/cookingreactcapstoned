@@ -9,6 +9,11 @@ import Portraitmeals from './components/Portraitmeals';
 import Rownavigatormenu from './components/Rownavigatormenu';
 import Homepath from './components/Portraithomepath';
 
+// "csstree/validator": false
+// since this project uses functions to choose over font and box sizes
+// for both screens, trying to validate with csstree defeats the purpose
+// of doing it since using functions is not recognized as standard even when it is working.
+
 function App() {
   const paths = {
     '/recipe/:id': Portraitmeals,

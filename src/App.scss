@@ -1,14 +1,23 @@
 @function core($base) {
   $result: 0.009658113525734344;
+
   @for $_ from 1 through $base {
     $result: $result * 1.1875;
   }
+
   @return $result;
 }
+
 @function core_font($base: 0) {
   $result: core(27 + $base);
 
   @return $result;
+}
+
+@function remcore_font($base: 0) {
+  $result: core(27 + $base);
+
+  @return 1rem * $result;
 }
 
 @function body_width($base: 1, $width: 100%) {
@@ -23,6 +32,7 @@
   .nav_body {
     width: $bodywidth !important;
   }
+
   .bodywidth_x3 {
     min-width: $bodywidth * 3;
   }
@@ -35,17 +45,6 @@
     .f#{$i * 100} {
       font-weight: $i * 100;
     }
-  }
-
-  .ratio_0 {
-    min-height: 14rem * core_font(2);
-    background-color: rgb(230, 230, 230);
-    position: relative;
-    // transform: scale(1 - core(3));
-    // background: url(../res/pic/pic2.jpg);
-    background-size: cover !important;
-    background-position: center;
-    // margin: 0 (core(14) * 1rem);
   }
 
   .underline {
@@ -111,7 +110,7 @@
     }
 
     .boxshadow_#{$i} {
-      box-shadow: 0px 0px 1rem * core($i) rgba(0, 0, 0, 0.24);
+      box-shadow: 0 0 1rem * core($i) rgba(0, 0, 0, 0.24);
     }
     .borderradius_#{$i} {
       border-radius: 3.6rem * core($i);
@@ -133,6 +132,7 @@
   @for $i from 0 through 50 {
     .f_#{$i} {
       font-size: 1rem * core_font($i);
+
       @for $ii from 0 through 50 {
         &.lh_#{$ii} {
           line-height: (1rem * core_font($i)) * core($ii + 27);
@@ -167,9 +167,7 @@
       z-index: $i !important;
     }
   }
-  .z_size_1 {
-    transform: scaleX(1 - core(3));
-  }
+
   @for $i from 1 through 50 {
     .pad_t#{$i} {
       padding-top: 1rem * core_font($i - 27);
@@ -270,6 +268,7 @@
   .tend {
     text-align: right;
   }
+
   .items_start {
     align-items: flex-start;
   }
@@ -307,6 +306,7 @@
   .tjust {
     text-align: justify;
   }
+
   .bodywidth {
     width: body_width(1, $bodywidth);
     max-width: body_width(1, $bodywidth);
@@ -321,21 +321,6 @@
     transform: translateY(3.6rem);
     transition: opacity 357ms, transform 357ms;
     will-change: opacity, transform;
-  }
-
-  .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-exit-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-appear-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app-enter-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-exit-done .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-enter-done
-    .disable_opasity:not(.no_disable).enable
-    .mobile_app_detail-appear-done
-    .disable_opasity:not(.no_disable).enable,
-  .mobile_app_detail-enter-done .disable_opasity:not(.no_disable).enable {
-    transition-delay: 357ms;
-    opacity: 1;
-    transform: translateY(0);
   }
 
   body {
@@ -354,10 +339,10 @@
   .overflowhidden {
     overflow: hidden;
   }
-    
+
   input,
   textarea {
-    font-family: "Poppins";
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     appearance: none;
@@ -386,6 +371,7 @@
     &:first-child {
       padding-left: unset !important;
     }
+
     &:last-child {
       padding-right: unset !important;
     }
@@ -410,6 +396,7 @@
     text-decoration: none;
     cursor: pointer !important;
   }
+
   .capitalize {
     text-transform: capitalize;
   }
@@ -421,6 +408,7 @@
   .relative {
     position: relative;
   }
+
   .absolute {
     position: absolute;
     left: 0;
@@ -437,6 +425,7 @@
       left: unset;
     }
   }
+
   .allsize {
     height: 100%;
     width: 100%;
@@ -446,9 +435,11 @@
   .allwidth {
     width: 100%;
   }
+
   .justify {
     text-align: justify !important;
   }
+
   .notselection {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -471,7 +462,7 @@
     ("3", rgb(242.25, 242.25, 242.25), 1rem * core(15)),
     ("4", rgb(229.5, 229.5, 229.5), 1rem * core(17)),
     ("5", #0bbdad, 1rem * core(17)), ("6", #0bbdad, 1rem * core(20));
-  
+
   $icons: ("beef", url("./res/svg/mealscategories/beef.svg")),
     ("breakfast", url("./res/svg/mealscategories/breakfast.svg")),
     ("chicken", url("./res/svg/mealscategories/chicken.svg")),
@@ -500,20 +491,20 @@
   .borderbox {
     box-sizing: border-box;
   }
+
   .cover {
     background-size: cover;
   }
+
   .section_c0 {
     opacity: 0;
     -webkit-opacity: 0;
     will-change: opacity, transform, -webkit-transition, -webkit-transform;
-
     transition: opacity 300ms, transform 300ms;
     -webkit-transition: opacity 300ms, transform 300ms;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    transform: translateY(3.6rem * core_font(5));
-    -webkit-transform: translateY(3.6rem * core_font(5));
+
     &.active {
       opacity: 1;
       -webkit-opacity: 1;
@@ -522,8 +513,8 @@
     }
   }
 
-  $back-colors:("s0",#C490D1),("s1",#ACACDE),
-    ("0", #f9f9f9), ("1", #008000), ("2", #ffffff),
+  $back-colors:("s0",#c490d1),("s1",#acacde),
+    ("0", #f9f9f9), ("1", #008000), ("2", #fff),
     (
       "2b",
       (linear-gradient(-45deg, rgb(252.5, 252.5, 255), rgb(255, 252.5, 252.5)))
@@ -532,7 +523,7 @@
       "2c",
       (linear-gradient(-45deg, rgb(252.5, 252.5, 255), rgb(255, 252.5, 252.5)))
     ),
-    ("2d", (linear-gradient(0, rgb(250, 235, 235), rgb(245, 245, 255)))),
+    ("2d", (linear-gradient('0', rgb(250, 235, 235), rgb(245, 245, 255)))),
     ("3", rgba(56, 56, 56, 0.04)), ("4", #fde07b), ("5", #ffdc63),
     ("6", #c4c4c4), ("7", #fee580), ("8", rgba(254, 229, 128, 0.14)),
     ("mask_pink", #e490b7), ("green", rgb(69, 208, 156)),
@@ -549,8 +540,8 @@
     ),
     ("23", rgb(250, 250, 250)), ("24", rgb(83, 238, 191));
 
-  $fore-colors: ("s0",#B8336A),
-  ("0", #008000), ("1", #008000), ("2", #e490b7),
+  $fore-colors: ("s0",#b8336a),
+    ("0", #008000), ("1", #008000), ("2", #e490b7),
     ("4", rgba(56, 56, 56, 0.24)), ("6", rgba(0, 0, 15, 0.34)), ("5", #383838),
     ("7", rgba(56, 56, 56, 0.94)), ("8", #3838383d),
     ("9", rgba(250, 250, 250, 0.94)), ("10", rgb(233, 244, 245)),
@@ -562,19 +553,6 @@
     ("19", #0bbdad), ("20", rgb(83, 238, 191)), ("21", #969696);
   $jpg-pic: ("pic0", url("./res/jpg/pic_1.jpg")), ("", url());
 
-  .mobile_app_jpg {
-    // background-position-y: 3.6rem * core(27);
-  }
-
-  .before_1::before {
-    position: absolute;
-    content: "";
-    height: 3.6rem * core(18 + 23);
-    background: linear-gradient(45deg, rgb(225, 240, 240), #eafafa);
-    width: 100%;
-    left: 0;
-    z-index: -1;
-  }
   &.hover {
     position: relative;
 
@@ -592,10 +570,12 @@
         bottom: 0;
         height: unset;
       }
+
       &.bottom.pointer {
         pointer-events: unset;
       }
     }
+
     &.inverse .to_hover {
       opacity: 1;
       width: 100.2%;
@@ -608,16 +588,20 @@
       opacity: 1;
       pointer-events: all;
     }
+
     &.inverse:hover > .to_hover {
       opacity: 0;
     }
   }
+
   .novisible {
     opacity: 0;
   }
+
   .nopointerevents {
     pointer-events: none;
   }
+
   &.hover_b {
     & .to_hover_b {
       opacity: 0;
@@ -651,7 +635,6 @@
         white-space: pre-wrap;
         color: #383838;
         box-sizing: border-box;
-        padding: 0 1rem * core_font(1);
       }
 
       &:hover {
@@ -665,10 +648,10 @@
   @each $icon in $icons {
     &.svgicon_#{nth($icon,1)} {
       background-image: nth($icon, 2);
-      min-width: 1rem * core_font(3);
-      max-width: 1rem * core_font(3);
-      min-height: 1rem * core_font(3);
-      background-size: 1rem * core_font(3);
+      min-width: remcore_font(3);
+      max-width: remcore_font(3);
+      min-height: remcore_font(3);
+      background-size: remcore_font(3);
       background-repeat: no-repeat;
       background-position: center;
       cursor: pointer;
@@ -679,10 +662,10 @@
   @each $icon in $icons {
     &.maskicon_#{nth($icon,1)} {
       mask-image: nth($icon, 2);
-      min-width: 1rem * core_font(3);
-      max-width: 1rem * core_font(3);
-      min-height: 1rem * core_font(3);
-      mask-size: 1rem * core_font(3);
+      min-width: remcore_font(3);
+      max-width: remcore_font(3);
+      min-height: remcore_font(3);
+      mask-size: remcore_font(3);
       background-color: #383838;
       mask-repeat: no-repeat;
       mask-position: center;
@@ -715,12 +698,14 @@
 
   @each $pic in $jpg-pic {
     &.pic_#{nth($pic,1)} {
-      background: linear-gradient(
+      background:
+        linear-gradient(
           180deg,
           rgba(0, 0, 0, 0.24) -30%,
           rgba(0, 0, 0, 0) 98.35%
         ),
-        nth($pic, 2), #f7fafc;
+        nth($pic, 2),
+        #f7fafc;
       background-repeat: no-repeat;
       background-position: center;
 
@@ -767,6 +752,7 @@
     // image-rendering:;
     // image-rendering: -webkit-optimize-contrast;
   }
+
   .fix_16_9_0 {
     margin: -1px;
   }
@@ -791,12 +777,14 @@
       &:active {
         border: nth($border, 3) solid nth($border, 2);
       }
+
       &:focus {
         border: nth($border, 3) solid nth($border, 2);
         outline: none;
       }
     }
   }
+
   @each $color in $back-colors {
     input[type=checkbox]:checked.upback_#{nth($color,1)} {
       background-color: nth($color, 2);
@@ -837,17 +825,21 @@
     transform: translateY(-100%);
     opacity: 1;
     transition: transform 357ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
     &.active {
       transform: translateY(0);
       opacity: 1;
     }
   }
+
   .btn {
     touch-action: manipulation;
   }
+
   .btn:hover {
     cursor: pointer !important;
   }
+
   .btn_u:hover {
     cursor: pointer !important;
     text-decoration: underline !important;
@@ -855,18 +847,20 @@
 }
 
 $hover-msg: (
-    "more",
-    "Combine 2 cups bread flour.\a\a Shape the dough into a ball. \a\a...\a\a 7 Steps \a Click for more details"
-  ),
+  "more",
+  "Combine 2 cups bread flour.\a\a Shape the dough into a ball. \a\a...\a\a 7 Steps \a Click for more details"
+),
   ("more_1", "Click for more details");
 $hover-msg-mobile: ("more", "Tap again for more details"),
   ("more_1", "Click for more details");
 
 @media (orientation: portrait), (max-width: 1000px) {
   @include app(100vw, 1);
+
   .good_display {
     background-color: rgba(255, 255, 255, 0.86);
   }
+
   #root {
     overflow-x: hidden;
   }
@@ -902,10 +896,6 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
 
   .mobilehide {
     display: none;
-  }
-
-  html {
-    font-size: 1rem * core(27);
   }
 
   .box {
@@ -1001,6 +991,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
     }
     &.box.corebox_x#{$i} {
       width: 3.6rem * core($i + 23 - 5);
+
       &:active,
       &:focus {
         width: 3.6rem * core($i + 23 - 5);
@@ -1018,6 +1009,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
     flex-basis: 100%;
     flex-wrap: wrap;
   }
+
   .ratio_0 {
     min-height: body_width(2, $bodywidth) * core_font(1);
     // transform: scale(1 - core(3));
@@ -1052,6 +1044,7 @@ $hover-msg-mobile: ("more", "Tap again for more details"),
       }
     }
   }
+
   html {
     overflow-x: hidden;
     font-size: 100% * core(27);
