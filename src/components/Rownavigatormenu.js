@@ -4,27 +4,17 @@ import { useLocation } from 'react-router-dom';
 import { createMapDispatchtoProps } from '../reducers/createDefaultreducer';
 
 function Rownavigatormenu({
-  history,
   history: { length: historylength },
   session: { active },
-  u_session: Usession,
 }) {
   const { pathname } = useLocation();
-  const handleSignout = () => Usession('active', false);
   const handleClick = (string) => {
     switch (string) {
-      case ('Assistant'): history.push('/assistant'); break;
-      case ('Settings'): history.push('/profile/settings'); break;
-      case ('Library'): history.push('/profile/library'); break;
-      case ('Save'): history.push('/profile/library'); break;
-      case ('Sign'): history.push('/sign'); break;
-      case ('Back'): history.goBack(); break;
-      case ('Sign out'): handleSignout(); break;
-      default: history.push('/'); break;
+      default: window.location.href = '/'; break;
     }
   };
 
-  const mapUrlwithcontrols = (string) => ['Save'][['/recipe/'].findIndex((e) => string.match(e))];
+  const mapUrlwithcontrols = (string) => [''][['/recipe/'].findIndex((e) => string.match(e))];
   return [
     <div key="Rownavigatormenu" className="corebox_3 nav row space_between items_center back_s1">
 
@@ -92,11 +82,9 @@ Rownavigatormenu.propTypes = {
   session: PropTypes.shape({
     active: PropTypes.bool, activesession: PropTypes.shape({ nick: PropTypes.string }),
   }).isRequired,
-  u_session: PropTypes.func,
 };
 
 Rownavigatormenu.defaultProps = {
-  u_session: () => 0,
   history: {
     length: 0,
   },

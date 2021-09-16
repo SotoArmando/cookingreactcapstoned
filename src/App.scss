@@ -497,6 +497,12 @@
     min-height: 100vh;
   }
 
+  .borderbox {
+    box-sizing: border-box;
+  }
+  .cover {
+    background-size: cover;
+  }
   .section_c0 {
     opacity: 0;
     -webkit-opacity: 0;
@@ -554,7 +560,7 @@
     ("14", rgb(191.25, 191.25, 191.25)), ("15", rgb(191.25, 191.25, 191.25)),
     ("16", rgb(76.5, 76.5, 76.5)), ("17", rgb(102, 102, 102)), ("18", white),
     ("19", #0bbdad), ("20", rgb(83, 238, 191)), ("21", #969696);
-  $jpg-pic: ();
+  $jpg-pic: ("pic0", url("./res/jpg/pic_1.jpg")), ("", url());
 
   .mobile_app_jpg {
     // background-position-y: 3.6rem * core(27);
