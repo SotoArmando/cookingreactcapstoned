@@ -1,71 +1,37 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Cellmeal({
-  strMeal,
-  idMeal,
-  marginh,
+  strMeal, strMealThumb, idMeal, marginh, marginv, key,
 }) {
-  const [history, [state, setState]] = [useHistory(), useState({ marked: false, liked: false })];
-  const { marked, liked } = state;
-  const handleClick = (e) => {
-    switch (e) {
-      case ('Like'):
-      case ('Liked'): {
-        setState({ ...state, liked: !liked });
-        break;
-      }
-      case ('Mark'):
-      case ('Marked'): {
-        setState({ ...state, marked: !marked });
-        break;
-      }
-      default: {
-        history.push(`/recipe/${idMeal}`);
-        break;
-      }
-    }
+  const [history] = [useHistory()];
+  const handleClick = () => {
+    history.push(`/recipe/${idMeal}`);
   };
 
+  const handleKeyDown = (ev) => {
+    if (ev.keyCode === 13) {
+      handleClick();
+    }
+  };
   return (
-    <div data-testid="Cellmeal" className={`col space_between mar_l${marginh} mar_r${marginh} mar_t${marginh} mar_b${marginh} corebox_10 back_3 pad_22`}>
-      <div
-        className="btn_u"
-        aria-hidden="true"
-        onClick={() => (handleClick)()}
-      >
-        {strMeal}
-      </div>
-      <div className="row">
-        {[liked ? 'Liked' : 'Like', marked ? 'Marked' : 'Mark'].map(
-          (e, i) => (
-            <span
-              key={`cellmealchecks${e}`}
-              onClick={() => handleClick(e)}
-              className={`btn_u corebox_x5 ${[liked, marked][i] ? 'f600' : ''}`}
-              aria-hidden="true"
-            >
-              {e}
-            </span>
-          ),
-        )}
+    <div key={key} role="button" tabIndex={0} data-testid="Cellmeal" className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick} onKeyDown={handleKeyDown}>
+      <div className="allsize back_0 col">
+        <div className="corebox_12 cover" style={{ backgroundImage: `url(${strMealThumb})`, backgroundSize: 'cover' }} />
+        <div className="col pad_24">
+          <div>{strMeal}</div>
+        </div>
       </div>
     </div>
   );
 }
-
 Cellmeal.propTypes = {
-  strMeal: PropTypes.string,
-  idMeal: PropTypes.string,
-  marginh: PropTypes.number,
-};
-
-Cellmeal.defaultProps = {
-  strMeal: '',
-  idMeal: '',
-  marginh: 0,
+  strMeal: PropTypes.string.isRequired,
+  strMealThumb: PropTypes.string.isRequired,
+  idMeal: PropTypes.string.isRequired,
+  marginh: PropTypes.number.isRequired,
+  marginv: PropTypes.number.isRequired,
+  key: PropTypes.string.isRequired,
 };
 
 export default Cellmeal;

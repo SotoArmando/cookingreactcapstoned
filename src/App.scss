@@ -471,9 +471,21 @@
     ("3", rgb(242.25, 242.25, 242.25), 1rem * core(15)),
     ("4", rgb(229.5, 229.5, 229.5), 1rem * core(17)),
     ("5", #0bbdad, 1rem * core(17)), ("6", #0bbdad, 1rem * core(20));
-
-  $icons: ("circle", url(./assets/svg/cleancircle.svg)),
-    ("circle_1", url(./assets/svg/cleancircle.svg));
+  
+  $icons: ("beef", url("./res/svg/mealscategories/beef.svg")),
+    ("breakfast", url("./res/svg/mealscategories/breakfast.svg")),
+    ("chicken", url("./res/svg/mealscategories/chicken.svg")),
+    ("dessert", url("./res/svg/mealscategories/dessert.svg")),
+    ("goat", url("./res/svg/mealscategories/goat.svg")),
+    ("lamb", url("./res/svg/mealscategories/lamb.svg")),
+    ("miscellaneous", url("./res/svg/mealscategories/miscellaneous.svg")),
+    ("pasta", url("./res/svg/mealscategories/pasta.svg")),
+    ("pork", url("./res/svg/mealscategories/pork.svg")),
+    ("seafood", url("./res/svg/mealscategories/seafood.svg")),
+    ("side", url("./res/svg/mealscategories/side.svg")),
+    ("starter", url("./res/svg/mealscategories/starter.svg")),
+    ("vegan", url("./res/svg/mealscategories/vegan.svg")),
+    ("vegetarian", url("./res/svg/mealscategories/vegetarian.svg"));
 
   .transition_0 {
     transition: color 257ms;

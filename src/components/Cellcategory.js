@@ -1,30 +1,36 @@
 import PropTypes from 'prop-types';
 
-export default function Cellcategory({
-  strCategory, handleClick, marginv, marginh,
+function Cellcategory({
+  strCategory, handleClick, marginh, marginv, key,
 }) {
+  const handleKeyDown = (ev) => {
+    if (ev.keyCode === 13) {
+      handleClick();
+    }
+  };
   return (
-    <div
-      data-testid="Cellcategory"
-      className={`btn_u col fore_s0  mar_l${marginh} mar_r${marginh} mar_t${marginv} mar_b${marginv} corebox_10 back_s0 pad_22`}
-      onClick={() => handleClick(strCategory)}
-      aria-hidden="true"
-    >
-      {strCategory}
+    <div key={key} data-testid="Cellcategory" role="button" tabIndex={0} className={`btn_u corebox_12   pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={() => handleClick(strCategory)} onKeyDown={handleKeyDown}>
+      <div className="allsize back_0 col center">
+        <div className={`iconsize_34 pad_t24 mar_b24 svgicon_${strCategory.toLowerCase()}`} />
+        <span>{strCategory}</span>
+      </div>
     </div>
   );
 }
 
 Cellcategory.propTypes = {
   strCategory: PropTypes.string,
-  handleClick: PropTypes.func,
-  marginv: PropTypes.number,
   marginh: PropTypes.number,
+  marginv: PropTypes.number,
+  handleClick: PropTypes.func,
+  key: PropTypes.string.isRequired,
 };
 
 Cellcategory.defaultProps = {
-  strCategory: '',
-  handleClick: () => 0,
-  marginv: 20,
-  marginh: 20,
+  handleClick: () => { },
+  marginh: 12,
+  marginv: 12,
+  strCategory: 'Meat',
 };
+
+export default Cellcategory;

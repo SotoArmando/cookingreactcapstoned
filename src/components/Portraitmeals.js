@@ -1,18 +1,15 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetcher, mealdbkeys } from '../fetch';
 import { createMapDispatchtoProps } from '../reducers/createDefaultreducer';
 
 function Portraitmeal({
-  appstate: {
-    focusedmealdetails: {
-      strArea, strCategory, strInstructions, strMeal, strMealThumb, strTags, strYoutube,
-    },
-  }, u_appstate: Uappstate,
+  focusedmealdetails: details,
+  u_appstate: Uappstate,
 }) {
-  const [[loaded, setLoaded], { id = 0 }] = [useState(false), useParams(), useHistory()];
+  const [[loaded, setLoaded], { id }] = [useState(false), useParams()];
 
   const handleFetch = ({ meals: { 0: response } }) => {
     Uappstate('focusedmealdetails', response);
@@ -24,55 +21,81 @@ function Portraitmeal({
   };
 
   useEffect(() => {
-    if (loaded === false) {
+    let isMounted = true;
+    if (loaded === false && isMounted) {
       handleLoad();
       setLoaded(true);
     }
-  }, [loaded, setLoaded]);
+    return () => { isMounted = false; };
+  }, []);
+
+  const [{
+    strMeal,
+    strArea,
+    strInstructions,
+    strMealThumb,
+    strTags,
+    strYoutube,
+    strSource,
+  }, ingredients, measures] = [
+    details,
+    Object.entries(details).filter(([k, v]) => k.includes('strIngredient') && ((v || '').trim() !== '')),
+    Object.entries(details).filter(([k, v]) => (k.includes('strMeasure')
+        && ((v || '').trim() !== ''))),
+  ];
 
   return (
-    <div className="col pad_22">
-      <div
-        className="corebox_14 "
-        style={{
-          backgroundImage: `url(${strMealThumb})`,
-          backgroundSize: 'cover',
-        }}
-      />
-      <span className="f_1 corebox_3 row items_center">{strMeal}</span>
-      {
-            [strArea, strCategory, strMealThumb, strTags, strYoutube].map(
-              (e) => <span key={`Portraitmeallabel${e}`}>{e}</span>,
-            )
-        }
-      <span className="pad_t22">
-        {strInstructions}
-      </span>
+    <div className="row basis_46 grow back_3">
+      <div className="col relative">
+        <div className="corebox_18 mobilecorebox_14 cover fixed halfbodywidth" style={{ backgroundImage: `url(${strMealThumb})` }} />
+      </div>
+      <div className="col pad_33 back_2" data-testid="Portraitmeal">
+        <span className="f_4 f600">{strMeal}</span>
+        <span>{strArea}</span>
+        <span className="btn_u">{strSource}</span>
+        <span className="f_0 lh_3 corebox_11 center">{strInstructions}</span>
 
+        <div className="row basis_42 grow pad_t27 pad_b27">
+          <div className="col">
+            {ingredients.map(([, v]) => <span key={v} className="row items_center corebox_0">{v}</span>)}
+          </div>
+          <div className="col">
+            {measures.map(([, v]) => <span key={v} className="row items_center corebox_0">{v}</span>)}
+          </div>
+
+        </div>
+        <div className="row">
+          {
+
+            (strTags || '').split(',').map((e) => <span key={e} className="pad_r30 center f500">{e}</span>)
+          }
+        </div>
+        <span>{strYoutube}</span>
+
+      </div>
     </div>
   );
 }
+
 Portraitmeal.propTypes = {
-  appstate: PropTypes.shape({
-    focusedmealdetails: PropTypes.shape({
-      strArea: PropTypes.string,
-      strCategory: PropTypes.string,
-      strInstructions: PropTypes.string,
-      strMeal: PropTypes.string,
-      strMealThumb: PropTypes.string,
-      strTags: PropTypes.arrayOf(PropTypes.string),
-      strYoutube: PropTypes.string,
-    }),
+  focusedmealdetails: PropTypes.shape({
+    strArea: PropTypes.string,
+    strCategory: PropTypes.string,
+    strInstructions: PropTypes.string,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    strTags: PropTypes.arrayOf(PropTypes.string),
+    strYoutube: PropTypes.string,
   }),
   u_appstate: PropTypes.func,
 };
 
 Portraitmeal.defaultProps = {
-  appstate: {},
+  focusedmealdetails: {},
   u_appstate: () => 0,
 };
 
-const mapStatetoProps = ({ appstate }) => ({ appstate });
+const mapStatetoProps = ({ appstate: { focusedmealdetails } }) => ({ focusedmealdetails });
 const mapDispatchtoProps = createMapDispatchtoProps();
 
 export default connect(mapStatetoProps, mapDispatchtoProps)(Portraitmeal);
