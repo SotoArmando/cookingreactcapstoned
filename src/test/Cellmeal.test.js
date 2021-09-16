@@ -7,7 +7,7 @@ import {
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { act } from 'react-dom/test-utils';
-import Portraithomepath from '../components/Portraithomepath';
+import Portraithomepath from '../containers/Portraithomepath';
 import filter from './json_files/filter.json';
 import categories from './json_files/categories.json';
 import search from './json_files/search.json';
