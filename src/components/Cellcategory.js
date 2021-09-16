@@ -5,6 +5,7 @@ export default function Cellcategory({
 }) {
   return (
     <div
+      data-testid="Cellcategory"
       className={`btn_u col fore_s0  mar_l${marginh} mar_r${marginh} mar_t${marginv} mar_b${marginv} corebox_10 back_s0 pad_22`}
       onClick={() => handleClick(strCategory)}
       aria-hidden="true"

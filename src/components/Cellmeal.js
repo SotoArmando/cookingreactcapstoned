@@ -30,7 +30,7 @@ function Cellmeal({
   };
 
   return (
-    <div className={`col space_between mar_l${marginh} mar_r${marginh} mar_t${marginh} mar_b${marginh} corebox_10 back_3 pad_22`}>
+    <div data-testid="Cellmeal" className={`col space_between mar_l${marginh} mar_r${marginh} mar_t${marginh} mar_b${marginh} corebox_10 back_3 pad_22`}>
       <div
         className="btn_u"
         aria-hidden="true"

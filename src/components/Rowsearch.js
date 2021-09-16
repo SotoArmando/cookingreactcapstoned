@@ -8,7 +8,7 @@ export default function Rowsearch({ handleSubmit }) {
   };
   return (
     <div>
-      <input placeholder="Search " onKeyDownCapture={handleKeyDown} className="corebox_2 border_0 mar_b22 mar_t22" />
+      <input data-testid="Rowsearchinput" placeholder="Search " onKeyDownCapture={handleKeyDown} className="corebox_2 border_0 mar_b22 mar_t22" />
     </div>
   );
 }

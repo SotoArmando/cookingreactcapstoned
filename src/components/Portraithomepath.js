@@ -55,11 +55,12 @@ export default function Homepath({ u_appstate: Uappstate }) {
         list={categories}
         item={Cellcategory}
         handleClick={handleCategoryFilterUpdate}
+        testid="Wrappedrowlistcategories"
       />
       <span className="row items_center corebox_3 f600">Meals</span>
-      <Wrappedrowlist list={meals} item={Cellmeal} basis={40} marginv={23} marginh={23} />
+      <Wrappedrowlist list={meals} item={Cellmeal} basis={40} marginv={23} marginh={23} testid="Wrappedrowlistlibrary" />
       <span className="row items_center corebox_3 f600">Latest Meals</span>
-      <Wrappedrowlist list={mealslatest} item={Cellmeal} basis={40} marginv={23} marginh={23} />
+      <Wrappedrowlist list={mealslatest} item={Cellmeal} basis={40} marginv={23} marginh={23} testid="WrappedrowlistLatest" />
     </div>
   );
 }
