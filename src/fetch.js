@@ -80,7 +80,8 @@ function fetcher(url, call) {
         Promise.all(url.map(
           (e) => fetch(e, options).then((resp) => resp.json()).then(({ meals: items }) => (
             { [Detectitems(items[0])]: items }
-          )))).then(call);
+          )),
+        )).then(call);
       }
     },
     fetchcrudOperation: (operation = 'GET', body) => {

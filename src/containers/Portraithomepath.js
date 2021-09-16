@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import {
   Detectitems, fetcher, mealdbkeys,
 } from '../fetch';
-import Wrappedrowlist from './Wrappedrowlist';
-import Cellmeal from './Cellmeal';
-import Rowsearch from './Rowsearch';
-import Cellcategory from './Cellcategory';
+import Wrappedrowlist from '../components/Wrappedrowlist';
+import Cellmeal from '../components/Cellmeal';
+import Rowsearch from '../components/Rowsearch';
+import Cellcategory from '../components/Cellcategory';
 
 export default function Homepath({ u_appstate: Uappstate }) {
   const [[loaded, setLoaded], [data, setData]] = [useState(false), useState({})];

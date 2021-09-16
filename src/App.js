@@ -5,9 +5,9 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createMapDispatchtoProps } from './reducers/createDefaultreducer';
-import Portraitmeals from './components/Portraitmeals';
-import Rownavigatormenu from './components/Rownavigatormenu';
-import Homepath from './components/Portraithomepath';
+import Portraitmeals from './containers/Portraitmeals';
+import Rownavigatormenu from './containers/Rownavigatormenu';
+import Homepath from './containers/Portraithomepath';
 
 // "csstree/validator": false
 // since this project uses functions to choose over font and box sizes
