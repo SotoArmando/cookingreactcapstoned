@@ -1,4 +1,3 @@
-/* eslint-disable function-paren-newline */
 import { combineReducers } from 'redux';
 import { createDefaultreducer } from './createDefaultreducer';
 

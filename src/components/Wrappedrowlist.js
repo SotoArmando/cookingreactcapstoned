@@ -29,6 +29,9 @@ function Wrappedrowlist({
             marginh={marginh}
             marginv={marginv}
             flexgrow={1}
+            // #eslint-disable-next-line react/jsx-props-no-spreading
+            // In order to spread dynamicly objects it is needed to
+            // use spread operator over key-value objects.
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...e}
           />
