@@ -35,15 +35,15 @@ allows cooking for simpler.
 To get a local copy up and running follow these simple example steps.
 
 ### Usage
-  -git clone https://github.com/SotoArmando/cookingreactcapstoned
-  -git checkout feature_dothiscookingsite
-  -npm install
-  -npm run
+  - git clone https://github.com/SotoArmando/cookingreactcapstoned
+  - git checkout feature_dothiscookingsite
+  - npm install
+  - npm run
 ### Run tests
-  -git clone https://github.com/SotoArmando/cookingreactcapstoned
-  -git checkout feature_dothiscookingsite
-  -npm install
-  -npm test
+  - git clone https://github.com/SotoArmando/cookingreactcapstoned
+  - git checkout feature_dothiscookingsite
+  - npm install
+  - npm test
 
 
 ## Authors
