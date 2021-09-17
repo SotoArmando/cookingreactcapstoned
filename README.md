@@ -1,12 +1,25 @@
-# cookingreactcapstoned
 
-> One paragraph statement about the project.
-
+# React&Redux Capstone Project
 
 
-Additional description about the project and its features.
+
+This project is about cooking and its up to allow users to keep updated with specific dates and meals, and also having a fair amount of utilities that 
+allows cooking for simpler.
+
+
+
+- Features
+- Read & Consult Recipes
+- Consult & References Categories
+
+[TODO]
+- Alarms
+- Grocery Lists
+- Recipe Step Assistant
+- User Scope Sessions to persist on changes and updates
 
 ## Built With
+
 
 - Javascript,
 - ES6,
@@ -18,9 +31,10 @@ Additional description about the project and its features.
 - node-sass
 - react-router-dom
 
+
 ## Live Demo
 
-[Live Demo Link](https://mealsdbcapstoned.herokuapp.com/)
+[Live Demo Link](https://dothiscookingsite.herokuapp.com/)
 
 
 ## Getting Started
@@ -56,43 +70,41 @@ since redux itself has along anothers libraries you can use with like redux-pers
 
 
 
+To get a local copy up and running follow these simple example steps.
+
+
+
+
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+## Prerequisites
 
-### Setup
+## Setup
 
 This project was built using Node 16.14.1, to compile the source follow up install procedure and run it.
 
-### Install
+## Usage
+  - git clone https://github.com/SotoArmando/cookingreactcapstoned
+  - git checkout feature_dothiscookingsite
+  - npm install
+  - npm run
+## Run tests
+  - git clone https://github.com/SotoArmando/cookingreactcapstoned
+  - git checkout feature_dothiscookingsite
+  - npm install
+  - npm test
 
-Git clone https://github.com/SotoArmando/cookingreactcapstoned
-npm install
-npm run
-
-### Usage
-
-"./": Homepath (Latest Recipes, Recipes Categories and Search Filter)
-
-"./recipe/id": Recipepath (Fetches recipe id and display details )
-
-
-### Run tests
-
-Git clone https://github.com/SotoArmando/cookingreactcapstoned
-npm install
-npm test
 
 
 
 ## Authors
 
-👤 **Author1**
 
-- Github: [@Sotoarmando](https://github.com/Sotoarmando)
-- Twitter: [@Sotoarmando](https://twitter.com/sotoarmando)
-- Linkedin: [Armando Soto](https://linkedin.com/armandosotomelo)
+👤 **Sotoarmando**
+
+- Github: [@githubhandle](https://github.com/SotoArmando)
+
 
 
 ## 🤝 Contributing
