@@ -66,7 +66,6 @@ function Rownavigatormenu({
 
       </div>
     </div>,
-    <div key="Rownavigatormenucorebox_3" className="corebox_3" />,
 
   ];
 }

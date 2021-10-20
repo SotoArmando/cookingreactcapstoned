@@ -53,14 +53,15 @@ function fetcher(url, call) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'b7f80d2847msha3e556539a614c3p12cb51jsn29380fd29fa8',
+      'x-rapidapi-key': '477d809754msh81d0ac6c325f03ep1c4c09jsnfa66b339f4c7',
       'x-rapidapi-host': 'themealdb.p.rapidapi.com',
-
     },
   };
 
   const d = {
     fetch: (u) => {
+      // eslint-disable-next-line no-debugger
+      debugger;
       fetch(u || url, options)
         .then((res) => res.json())
         .then(call,
@@ -89,6 +90,8 @@ function fetcher(url, call) {
       fetch(fetchurl, {
         ...options,
         headers: {
+          'x-rapidapi-key': '477d809754msh81d0ac6c325f03ep1c4c09jsnfa66b339f4c7',
+          'x-rapidapi-host': 'themealdb.p.rapidapi.com',
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },

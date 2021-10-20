@@ -1,4 +1,4 @@
-import './App.scss';
+import './res/index.scss';
 import {
   Switch,
   Route,

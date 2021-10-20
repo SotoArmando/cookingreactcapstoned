@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   Detectitems, fetcher, mealdbkeys,
 } from '../fetch';
-import Wrappedrowlist from '../components/Wrappedrowlist';
+import Wrappedrow from '../components/Wrappedrow';
 import Cellmeal from '../components/Cellmeal';
 import Rowsearch from '../components/Rowsearch';
 import Cellcategory from '../components/Cellcategory';
@@ -57,16 +57,16 @@ export default function Homepath({ u_appstate: Uappstate }) {
   return (
     <div>
       <Rowsearch handleChange={handleKeyDown} />
-      <Wrappedrowlist
+      <Wrappedrow
         list={categories}
         item={Cellcategory}
         handleClick={handleCategoryFilterUpdate}
         testid="Wrappedrowlistcategories"
       />
       <span className="row items_center corebox_3 f600">Meals</span>
-      <Wrappedrowlist list={meals} item={Cellmeal} basis={41} marginv={23} marginh={23} testid="Wrappedrowlistlibrary" />
+      <Wrappedrow list={meals} item={Cellmeal} basis={42} marginv={23} marginh={30} testid="Wrappedrowlistlibrary" />
       <span className="row items_center corebox_3 f600">Latest Meals</span>
-      <Wrappedrowlist list={mealslatest} item={Cellmeal} basis={41} marginv={23} marginh={23} testid="WrappedrowlistLatest" />
+      <Wrappedrow list={mealslatest} item={Cellmeal} basis={42} marginv={23} marginh={23} testid="WrappedrowlistLatest" />
     </div>
   );
 }

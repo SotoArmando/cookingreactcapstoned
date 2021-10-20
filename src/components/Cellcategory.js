@@ -9,9 +9,9 @@ function Cellcategory({
     }
   };
   return (
-    <div key={strCategory} data-testid="Cellcategory" role="button" tabIndex={0} className={`btn_u corebox_12   pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={() => handleClick(strCategory)} onKeyDown={handleKeyDown}>
+    <div key={strCategory} data-testid="Cellcategory" role="button" tabIndex={0} className={`btn_u    mar_l${marginh} mar_r${marginh} mar_t${marginv} mar_b${marginv} `} onClick={() => handleClick(strCategory)} onKeyDown={handleKeyDown}>
       <div className="allsize back_0 col center">
-        <div className={`iconsize_34 pad_t24 mar_b24 svgicon_${strCategory.toLowerCase()}`} />
+        <div className={`iconsize_27 pad_t24 mar_b24 svgicon_${strCategory.toLowerCase()}`} />
         <span>{strCategory}</span>
       </div>
     </div>

@@ -14,8 +14,9 @@ function Cellmeal({
       handleClick();
     }
   };
+
   return (
-    <div key={strMeal} role="button" tabIndex={0} data-testid="Cellmeal" className={`btn_u corebox_13  pad_l${marginh} pad_r${marginh} pad_t${marginv} pad_b${marginv}`} onClick={handleClick} onKeyDown={handleKeyDown}>
+    <div key={strMeal} role="button" tabIndex={0} data-testid="Cellmeal" className={`btn_u corebox_13 half_horizontalmar half_verticalmar mar_l${marginh} mar_r${marginh} mar_t${marginv} mar_b${marginv}`} onClick={handleClick} onKeyDown={handleKeyDown}>
       <div className="allsize back_0 col">
         <div className="corebox_12 cover" style={{ backgroundImage: `url(${strMealThumb})`, backgroundSize: 'cover' }} />
         <div className="col pad_24">
@@ -31,7 +32,6 @@ Cellmeal.propTypes = {
   idMeal: PropTypes.string.isRequired,
   marginh: PropTypes.number.isRequired,
   marginv: PropTypes.number.isRequired,
-
 };
 
 export default Cellmeal;
