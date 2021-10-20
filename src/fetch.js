@@ -1,3 +1,5 @@
+import runtimeEnv from '@mars/heroku-js-runtime-env';
+const env = runtimeEnv();
 const mealdbkeys = {
   'Search meal by name': 'https://themealdb.p.rapidapi.com/search.php?s=',
   'Lookup full meal details by id': 'https://themealdb.p.rapidapi.com/lookup.php?i=',
@@ -53,7 +55,7 @@ function fetcher(url, call) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': process.env.REACT_APP_KEY || '',
+      'x-rapidapi-key': process.env.REACT_APP_KEY || env.REACT_APP_KEY,
       'x-rapidapi-host': 'themealdb.p.rapidapi.com',
     },
   };
@@ -90,7 +92,7 @@ function fetcher(url, call) {
       fetch(fetchurl, {
         ...options,
         headers: {
-          'x-rapidapi-key': process.env.REACT_APP_KEY || '',
+          'x-rapidapi-key': process.env.REACT_APP_KEY || env.REACT_APP_KEY,
           'x-rapidapi-host': 'themealdb.p.rapidapi.com',
           Accept: 'application/json',
           'Content-Type': 'application/json',
