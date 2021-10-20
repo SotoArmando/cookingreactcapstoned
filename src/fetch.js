@@ -1,4 +1,5 @@
 import runtimeEnv from '@mars/heroku-js-runtime-env';
+
 const env = runtimeEnv();
 const mealdbkeys = {
   'Search meal by name': 'https://themealdb.p.rapidapi.com/search.php?s=',
