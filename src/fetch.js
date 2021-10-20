@@ -53,7 +53,7 @@ function fetcher(url, call) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': '477d809754msh81d0ac6c325f03ep1c4c09jsnfa66b339f4c7',
+      'x-rapidapi-key': process.env.REACT_APP_KEY || '',
       'x-rapidapi-host': 'themealdb.p.rapidapi.com',
     },
   };
@@ -90,7 +90,7 @@ function fetcher(url, call) {
       fetch(fetchurl, {
         ...options,
         headers: {
-          'x-rapidapi-key': '477d809754msh81d0ac6c325f03ep1c4c09jsnfa66b339f4c7',
+          'x-rapidapi-key': process.env.REACT_APP_KEY || '',
           'x-rapidapi-host': 'themealdb.p.rapidapi.com',
           Accept: 'application/json',
           'Content-Type': 'application/json',
